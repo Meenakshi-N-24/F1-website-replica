@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The World of Formula 1</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@700;900&display=swap"
+      rel="stylesheet"
+      href="css/style.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress">
+      <div class="progress-dot" data-section="0"></div>
+      <div class="progress-dot" data-section="1"></div>
+      <div class="progress-dot" data-section="2"></div>
+      <div class="progress-dot" data-section="3"></div>
+      <div class="progress-dot" data-section="4"></div>
+      <div class="progress-dot" data-section="5"></div>
+    </div>
+
+    <!-- CHAPTER INDICATOR -->
+    <div class="chapter-indicator" id="chapterIndicator">
+      <div class="chapter-number">01</div>
+      <div class="chapter-divider"></div>
+      <div>HOME</div>
+    </div>
+
+    <div class="loading-screen" id="loadingScreen">
+      <!-- F1 LIGHT GANTRY -->
+      <div class="f1-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+      </div>
+
+      <!-- TEXT -->
+      <div class="loading-text" id="loadingText">
+        <span>LIGHTS OUT</span>
+        <span>& AWAY WE GO</span>
+      </div>
+
+      <!-- CHEQUERED FLAG -->
+      <div class="chequered-flag"></div>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+      <svg class="logo" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="30" fill="#E10600" />
+        <text x="10" y="22" fill="white" font-size="20" font-weight="bold">
+          F1
+        </text>
+      </svg>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">GRID ▼</a>
+          <div class="dropdown">
+            <a href="#">TEAMS</a>
+            <a href="#">DRIVERS</a>
+            <a href="#">CIRCUITS</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">LEGACY ▼</a>
+          <div class="dropdown">
+            <a href="#">HALL OF FAME</a>
+            <a href="#">ARTICLES</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="live-timing">
+        <div class="clock-icon">⏱</div>
+        <span class="live-text">LIVE</span>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1>THE WORLD OF <span>FORMULA 1</span></h1>
+        <p>Explore teams, drivers, circuits, and season highlights.</p>
+      </div>
+
+      <img
+        src="assets/images/smoky-car.png"
+        alt="Formula 1 car"
+        class="hero-car"
+      />
+    </section>
+
+    <!-- WHAT IS F1 SECTION -->
+    <section class="what-is-f1" data-section="1">
+      <h2 class="section-title">WHAT IS FORMULA 1?</h2>
+      <p class="section-description">
+        The pinnacle of motorsport. Where cutting-edge technology meets fearless
+        drivers. Twenty gladiators racing at speeds that defy belief across the
+        world's most iconic circuits.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">20</div>
+          <div class="stat-label">Drivers</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10</div>
+          <div class="stat-label">Teams</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">24</div>
+          <div class="stat-label">Circuits</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">340</div>
+          <div class="stat-label">KM/H Top Speed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVIGATION CARDS -->
+    <section class="nav-cards" data-section="2">
+      <div class="nav-card">
+        <div
+          class="card-bg"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&quot;);
+          "
+        ></div>
+        <div class="card-content">
+          <h2 class="card-title">THE GRID</h2>
+          <p class="card-subtitle">Teams • Drivers • Circuits</p>
+          <span class="card-cta">Explore</span>
+        </div>
+      </div>
+
+      <div class="nav-card">
+        <div
+          class="card-bg"
+          style="
+            background-image: url(&quot;https://images.unsplash.com/photo-1541443131876-44b03b8dff9f?q=80&w=2070&quot;);
+          "
+        ></div>
+        <div class="card-content">
+          <h2 class="card-title">LEGACY</h2>
+          <p class="card-subtitle">History • Records • Icons</p>
+          <span class="card-cta">Discover</span>
+        </div>
+      </div>
+    </section>
+    <!-- DID YOU KNOW SECTION -->
+    <section class="did-you-know" data-section="3">
+      <h2 class="dyk-title">Did You Know?</h2>
+      <div class="facts-grid">
+        <div class="fact-card">
+          <p class="fact-text">
+            F1 brakes can reach temperatures of
+            <span class="fact-highlight">1000°C</span>
+            – hot enough to glow red in the dark during night races.
+          </p>
+        </div>
+        <div class="fact-card">
+          <p class="fact-text">
+            Drivers lose an average of
+            <span class="fact-highlight">4kg</span> of body weight per race due
+            to extreme physical exertion and heat.
+          </p>
+        </div>
+        <div class="fact-card">
+          <p class="fact-text">
+            Modern F1 engines rev up to
+            <span class="fact-highlight">15,000 RPM</span>
+            and produce over 1000 horsepower from just 1.6 liters.
+          </p>
+        </div>
+        <div class="fact-card">
+          <p class="fact-text">
+            An F1 car can go from
+            <span class="fact-highlight">0 to 100 km/h and back to 0</span>
+            in less than 5 seconds combined.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKETCHY DIVIDER -->
+    <div class="sketchy-divider" data-section="4">
+      <div class="sketchy-line">
+        <svg viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M 0 50 Q 150 20, 300 50 T 600 50 T 900 50 T 1200 50"
+            stroke="#E10600"
+            stroke-width="3"
+            fill="none"
+            stroke-dasharray="2000"
+            stroke-dashoffset="2000"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="2000"
+              to="0"
+              dur="3s"
+              fill="freeze"
+            />
+          </path>
+          <path
+            d="M 0 55 Q 150 75, 300 55 T 600 55 T 900 55 T 1200 55"
+            stroke="#fff"
+            stroke-width="2"
+            fill="none"
+            stroke-dasharray="2000"
+            stroke-dashoffset="2000"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="2000"
+              to="0"
+              dur="3s"
+              begin="0.2s"
+              fill="freeze"
+            />
+          </path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" data-section="5">
+      <div class="checkered-flag"></div>
+      <div class="footer-content">
+        <div class="finish-line-text">FINISH LINE</div>
+        <p class="footer-text">© 2026 The World of Formula 1</p>
+        <p class="footer-text">Built with ❤️ and adrenaline</p>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>
