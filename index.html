@@ -4,33 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The World of Formula 1</title>
+
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@700;900&display=swap"
       rel="stylesheet"
-      href="css/style.css"
     />
+    <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
-    <!-- SCROLL PROGRESS -->
-    <div class="scroll-progress" id="scrollProgress">
-      <div class="progress-dot" data-section="0"></div>
-      <div class="progress-dot" data-section="1"></div>
-      <div class="progress-dot" data-section="2"></div>
-      <div class="progress-dot" data-section="3"></div>
-      <div class="progress-dot" data-section="4"></div>
-      <div class="progress-dot" data-section="5"></div>
-    </div>
 
-    <!-- CHAPTER INDICATOR -->
-    <div class="chapter-indicator" id="chapterIndicator">
-      <div class="chapter-number">01</div>
-      <div class="chapter-divider"></div>
-      <div>HOME</div>
-    </div>
-
+  <body class="no-scroll">
+    <!-- LOADING SCREEN -->
     <div class="loading-screen" id="loadingScreen">
-      <!-- F1 LIGHT GANTRY -->
       <div class="f1-lights">
         <div class="light"></div>
         <div class="light"></div>
@@ -39,52 +25,68 @@
         <div class="light"></div>
       </div>
 
-      <!-- TEXT -->
       <div class="loading-text" id="loadingText">
         <span>LIGHTS OUT</span>
         <span>& AWAY WE GO</span>
       </div>
 
-      <!-- CHEQUERED FLAG -->
       <div class="chequered-flag"></div>
     </div>
 
-    <!-- NAVIGATION BAR -->
-    <nav class="navbar">
-      <svg class="logo" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-        <rect width="120" height="30" fill="#E10600" />
-        <text x="10" y="22" fill="white" font-size="20" font-weight="bold">
-          F1
-        </text>
-      </svg>
+    <!-- SCROLL PROGRESS -->
+    <div class="scroll-progress" id="scrollProgress">
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <!-- CHAPTER INDICATOR -->
+    <div class="chapter-indicator" id="chapterIndicator">
+      <div class="chapter-number">01</div>
+      <div class="chapter-divider"></div>
+      <div class="chapter-name">HOME</div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <a href="#home">
+        <img
+          src="assets/images/92291f3a4295364292c327b28ecea669.jpg"
+          alt="Formula 1 Logo"
+          class="logo"
+        />
+      </a>
 
       <ul class="nav-links">
-        <li class="nav-item"><a href="#" class="nav-link">HOME</a></li>
+        <li><a class="nav-link" href="#home">HOME</a></li>
         <li class="nav-item">
-          <a href="#" class="nav-link">GRID ▼</a>
+          <a class="nav-link" href="#grid">GRID ▼</a>
           <div class="dropdown">
-            <a href="#">TEAMS</a>
-            <a href="#">DRIVERS</a>
-            <a href="#">CIRCUITS</a>
+            <a href="#teams">TEAMS</a>
+            <a href="#drivers">DRIVERS</a>
+            <a href="#circuits">CIRCUITS</a>
           </div>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">LEGACY ▼</a>
+          <a class="nav-link" href="#legacy">LEGACY ▼</a>
           <div class="dropdown">
-            <a href="#">HALL OF FAME</a>
-            <a href="#">ARTICLES</a>
+            <a href="#hall">HALL OF FAME</a>
+            <a href="#articles">ARTICLES</a>
           </div>
         </li>
       </ul>
 
       <div class="live-timing">
-        <div class="clock-icon">⏱</div>
+        <span class="clock-icon">⏱</span>
         <span class="live-text">LIVE</span>
       </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
+    <!-- HERO -->
+    <section class="hero" id="home" data-section="0">
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
@@ -93,14 +95,14 @@
       </div>
 
       <img
-        src="assets/images/smoky-car.png"
-        alt="Formula 1 car"
+        src="assets\images\3e469322-7ab9-4a8c-ac15-4eb74adac011.png"
+        alt="Formula 1 Car"
         class="hero-car"
       />
     </section>
 
-    <!-- WHAT IS F1 SECTION -->
-    <section class="what-is-f1" data-section="1">
+    <!-- WHAT IS F1 -->
+    <section class="what-is-f1" id="about" data-section="1">
       <h2 class="section-title">WHAT IS FORMULA 1?</h2>
       <p class="section-description">
         The pinnacle of motorsport. Where cutting-edge technology meets fearless
@@ -127,8 +129,8 @@
       </div>
     </section>
 
-    <!-- NAVIGATION CARDS -->
-    <section class="nav-cards" data-section="2">
+    <!-- NAV CARDS -->
+    <section class="nav-cards" id="navigate" data-section="2">
       <div class="nav-card">
         <div
           class="card-bg"
@@ -147,7 +149,7 @@
         <div
           class="card-bg"
           style="
-            background-image: url(&quot;https://images.unsplash.com/photo-1541443131876-44b03b8dff9f?q=80&w=2070&quot;);
+            background-image: url(&quot;https://images.unsplash.com/photo-1541443131876-44b03de101c5?q=80&w=2070&quot;);
           "
         ></div>
         <div class="card-content">
@@ -157,8 +159,9 @@
         </div>
       </div>
     </section>
-    <!-- DID YOU KNOW SECTION -->
-    <section class="did-you-know" data-section="3">
+
+    <!-- DID YOU KNOW -->
+    <section class="did-you-know" id="facts" data-section="3">
       <h2 class="dyk-title">Did You Know?</h2>
       <div class="facts-grid">
         <div class="fact-card">
@@ -192,10 +195,10 @@
       </div>
     </section>
 
-    <!-- SKETCHY DIVIDER -->
+    <!-- DIVIDER -->
     <div class="sketchy-divider" data-section="4">
       <div class="sketchy-line">
-        <svg viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 1200 100">
           <path
             d="M 0 50 Q 150 20, 300 50 T 600 50 T 900 50 T 1200 50"
             stroke="#E10600"
@@ -242,6 +245,8 @@
         <p class="footer-text">Built with ❤️ and adrenaline</p>
       </div>
     </footer>
+
+    <!-- Main JavaScript -->
     <script src="js/main.js"></script>
   </body>
 </html>

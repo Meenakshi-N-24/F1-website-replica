@@ -1,31 +1,45 @@
-// LOADING SEQUENCE (F1 STYLE)
-const lights = document.querySelectorAll('.f1-lights .light');
-const loadingText = document.getElementById('loadingText');
+/* ========================================
+   LOADING SEQUENCE
+======================================== */
+const lights = document.querySelectorAll('.light');
 const loadingScreen = document.getElementById('loadingScreen');
+const loadingText = document.getElementById('loadingText');
+const flag = document.querySelector('.chequered-flag');
+const navbar = document.getElementById('navbar');
 
 let index = 0;
 
+// Turn on lights one by one
 const lightInterval = setInterval(() => {
-    if (index < lights.length) {
-        lights[index].classList.add('on');
-        index++;
-    } else {
-        clearInterval(lightInterval);
+  if (index < lights.length) {
+    lights[index].classList.add('on');
+    index++;
+  } else {
+    clearInterval(lightInterval);
 
-        // Lights out
+    // Lights out sequence
+    setTimeout(() => {
+      lights.forEach(l => l.classList.remove('on'));
+      
+      // Show text and flag
+      setTimeout(() => {
+        loadingText.classList.add('show');
+        flag.classList.add('show');
+
+        // Hide loader and show site
         setTimeout(() => {
-            lights.forEach(light => light.classList.remove('on'));
+          loadingScreen.classList.add('hidden');
+          document.body.classList.remove('no-scroll');
+          navbar.classList.add('show');
+        }, 1200);
+      }, 300);
+    }, 700);
+  }
+}, 650);
 
-            // Hide loader
-            setTimeout(() => {
-                loadingScreen.classList.add('hidden');
-            }, 1200);
-
-        }, 800);
-    }
-}, 650); // slower = more drama
-
-// SCROLL ANIMATIONS
+/* ========================================
+   SCROLL ANIMATIONS
+======================================== */
 const observerOptions = {
   threshold: 0.2,
   rootMargin: "0px 0px -100px 0px",
@@ -34,8 +48,7 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      entry.target
-        .querySelectorAll(".section-title, .section-description, .stat-card")
+      entry.target.querySelectorAll(".section-title, .section-description, .stat-card")
         .forEach((el, i) => {
           setTimeout(() => {
             el.classList.add("visible");
@@ -49,7 +62,9 @@ document.querySelectorAll(".what-is-f1").forEach((section) => {
   observer.observe(section);
 });
 
-// SCROLL PROGRESS & CHAPTERS
+/* ========================================
+   SCROLL PROGRESS & CHAPTERS
+======================================== */
 const sections = document.querySelectorAll("[data-section]");
 const progressDots = document.querySelectorAll(".progress-dot");
 const scrollProgress = document.getElementById("scrollProgress");
@@ -68,19 +83,36 @@ window.addEventListener("scroll", () => {
 
   sections.forEach((section, i) => {
     const rect = section.getBoundingClientRect();
-    if (
-      rect.top <= window.innerHeight / 2 &&
-      rect.bottom >= window.innerHeight / 2
-    ) {
+    
+    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
       progressDots.forEach((dot) => dot.classList.remove("active"));
       if (progressDots[i]) {
         progressDots[i].classList.add("active");
       }
 
       const chapterNum = document.querySelector(".chapter-number");
-      const chapterName = chapterIndicator.querySelector("div:last-child");
-      chapterNum.textContent = "0" + (i + 1);
-      chapterName.textContent = chapterNames[i];
+      const chapterName = document.querySelector(".chapter-name");
+      
+      if (chapterNum && chapterName) {
+        chapterNum.textContent = "0" + (i + 1);
+        chapterName.textContent = chapterNames[i];
+      }
+    }
+  });
+});
+
+/* ========================================
+   SMOOTH SCROLL
+======================================== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   });
 });
