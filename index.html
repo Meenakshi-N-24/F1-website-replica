@@ -10,14 +10,47 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@700;900&display=swap"
       rel="stylesheet"
     />
-    <!-- Main CSS -->
+
     <link rel="stylesheet" href="css/style.css" />
   </head>
-
   <body class="no-scroll">
-    <!-- LOADING SCREEN -->
     <div class="loading-screen" id="loadingScreen">
-      <div class="f1-lights">
+      <!-- PRE-LOADER -->
+      <div class="preloader" id="preloader">
+        <div class="f1-logo-wrap">
+          <div class="f1-logo">
+            <span class="f1-letter f">F</span>
+            <span class="f1-number">1</span>
+          </div>
+          <div class="f1-tagline">FORMULA ONE</div>
+        </div>
+      </div>
+
+      <!-- Skip Intro Button (ONLY ONE!) -->
+      <button class="skip-intro" id="skipIntro">Skip Intro</button>
+
+      <!-- Start Button -->
+      <div class="start-button-container" id="startButton">
+        <button class="start-btn">
+          <span class="btn-icon">🏁</span>
+          <span class="btn-text">START</span>
+          <span class="f1-label">F1</span>
+        </button>
+        <div class="engine-indicators">
+          <div class="indicator">
+            <div class="indicator-dot"></div>
+            <span>READY</span>
+          </div>
+          <div class="indicator">
+            <div class="indicator-dot"></div>
+            <span>SYSTEM OK</span>
+          </div>
+        </div>
+        <p class="start-hint">Press to begin</p>
+      </div>
+
+      <!-- F1 Lights -->
+      <div class="f1-lights" id="f1Lights" style="display: none">
         <div class="light"></div>
         <div class="light"></div>
         <div class="light"></div>
@@ -31,6 +64,16 @@
       </div>
 
       <div class="chequered-flag"></div>
+
+      <!-- CHEQUERED FLAG GIF -->
+      <div class="flag-overlay" id="flagOverlay">
+        <img
+          src="assets/Images/chequered.gif"
+          alt="Chequered Flag"
+          class="flag-gif"
+          id="flagGif"
+        />
+      </div>
     </div>
 
     <!-- SCROLL PROGRESS -->
@@ -52,18 +95,17 @@
 
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
-      <a href="#home">
-        <img
-          src="assets/images/92291f3a4295364292c327b28ecea669.jpg"
-          alt="Formula 1 Logo"
-          class="logo"
-        />
+      <!-- F1 Logo - clicks to official F1 website -->
+      <a href="https://www.formula1.com" target="_blank" class="logo-link">
+        <img src="assets\Images\f1-logo1.png" alt="F1 Logo" class="logo" />
       </a>
 
       <ul class="nav-links">
-        <li><a class="nav-link" href="#home">HOME</a></li>
+        <li>
+          <a class="nav-link active" href="#home">HOME</a>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" href="#grid">GRID ▼</a>
+          <a class="nav-link" href="#">GRID ▼</a>
           <div class="dropdown">
             <a href="#teams">TEAMS</a>
             <a href="#drivers">DRIVERS</a>
@@ -71,7 +113,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#legacy">LEGACY ▼</a>
+          <a class="nav-link" href="#">LEGACY ▼</a>
           <div class="dropdown">
             <a href="#hall">HALL OF FAME</a>
             <a href="#articles">ARTICLES</a>
@@ -79,27 +121,48 @@
         </li>
       </ul>
 
-      <div class="live-timing">
+      <!-- Live button - goes to F1 schedule page -->
+      <div
+        class="live-timing"
+        onclick="
+          window.open('https://www.formula1.com/en/racing/2026', '_blank')
+        "
+      >
         <span class="clock-icon">⏱</span>
         <span class="live-text">LIVE</span>
       </div>
     </nav>
 
     <!-- HERO -->
-    <section class="hero" id="home" data-section="0">
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <h1>THE WORLD OF <span>FORMULA 1</span></h1>
-        <p>Explore teams, drivers, circuits, and season highlights.</p>
+    <section class="hero" id="home">
+      <!-- Background Image -->
+      <div class="hero-bg">
+        <img src="assets/Images/hero1.png" alt="Formula 1" class="hero-img" />
       </div>
 
-      <img
-        src="assets\images\3e469322-7ab9-4a8c-ac15-4eb74adac011.png"
-        alt="Formula 1 Car"
-        class="hero-car"
-      />
+      <!-- Centered Content -->
+      <div class="hero-content">
+
+        <!-- Main headline -->
+        <h1 class="hero-title">
+          <span class="hero-title-top">THE WORLD OF</span>
+          <span class="hero-title-bottom">FORMULA <em>1</em></span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="hero-sub">Speed. Power. Legacy.</p>
+      </div>
+      <!-- ✅ hero-content closes HERE -->
+
+      <!-- Scroll indicator — OUTSIDE hero-content -->
+      <div class="hero-scroll">
+        <span class="hero-scroll-text">Scroll</span>
+        <div class="hero-chevrons">
+          <span class="chevron"></span>
+        </div>
+      </div>
     </section>
+    <!-- ✅ hero section closes HERE -->
 
     <!-- WHAT IS F1 -->
     <section class="what-is-f1" id="about" data-section="1">
@@ -245,7 +308,6 @@
         <p class="footer-text">Built with ❤️ and adrenaline</p>
       </div>
     </footer>
-
     <!-- Main JavaScript -->
     <script src="js/main.js"></script>
   </body>
