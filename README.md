@@ -8,8 +8,7 @@ A clean, minimal Formula 1–inspired website built as a frontend practice proje
 - JavaScript
 
 ## 🔗 Live Website
-🚧 Deployment coming soon.
-The project is currently under active development.
+🚧 Coming soon — final version will be deployed after development is complete.
 
 ## 📌 Status
 Work in progress — design and structure will continue to evolve.
