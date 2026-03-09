@@ -207,10 +207,206 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
    NAVBAR
 ======================================== */
 navbar.classList.add("show");
-window.addEventListener('scroll', () => {
+window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
+    navbar.classList.add("scrolled");
   } else {
-    navbar.classList.remove('scrolled');
+    navbar.classList.remove("scrolled");
   }
 });
+
+/* ========================================
+   SEASON SECTION — Live F1 Data
+======================================== */
+
+/* TEAM COLORS */
+const teamColors = {
+  red_bull: "#3671C6",
+  ferrari: "#E8002D",
+  mercedes: "#27F4D2",
+  mclaren: "#FF8000",
+  aston_martin: "#229971",
+  alpine: "#FF87BC",
+  williams: "#64C4FF",
+  rb: "#6692FF",
+  audi: "#616161",
+  haas: "#fdc1c1",
+  cadillac: "#0f0000",
+};
+
+/* COUNTRY FLAGS (SVG) */
+const countryFlags = {
+  Australia: "au",
+  Bahrain: "bh",
+  China: "cn",
+  Japan: "jp",
+  "Saudi Arabia": "sa",
+  Italy: "it",
+  Monaco: "mc",
+  Canada: "ca",
+  Spain: "es",
+  Austria: "at",
+  Hungary: "hu",
+  Belgium: "be",
+  Netherlands: "nl",
+  Singapore: "sg",
+  Azerbaijan: "az",
+  Mexico: "mx",
+  Brazil: "br",
+  Qatar: "qa",
+  "United States": "us",
+  "United States of America": "us",
+  "United Kingdom": "gb",
+  "Great Britain": "gb",
+  "United Arab Emirates": "ae",
+};
+
+/* =====================================
+NEXT RACE + COUNTDOWN 
+======================================== */
+async function fetchNextRace() {
+  try {
+    const res = await fetch("https://api.jolpi.ca/ergast/f1/2026/next/");
+    const data = await res.json();
+    const race = data.MRData.RaceTable.Races[0];
+
+    if (!race) return;
+
+    const raceDateTime = new Date(`${race.date}T${race.time || "00:00:00"}`);
+
+    const country = race.Circuit.Location.country;
+    const code = countryFlags[country];
+
+    document.getElementById("raceCountry").innerHTML =
+      `<img src="https://flagcdn.com/24x18/${code}.png" style="margin-right:6px;vertical-align:middle;"> ${country}`;
+      document.getElementById("raceRound").textContent = `Round ${race.round}`;
+
+    document.getElementById("raceName").textContent = race.raceName;
+
+    document.getElementById("raceLocation").textContent =
+      `${race.Circuit.circuitName} · ${race.Circuit.Location.locality}`;
+
+    document.getElementById("raceDate").textContent =
+      raceDateTime.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+      });
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = raceDateTime - now;
+
+      if (diff <= 0) return;
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = String(d).padStart(2, "0");
+      document.getElementById("hours").textContent = String(h).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(m).padStart(
+        2,
+        "0",
+      );
+      document.getElementById("seconds").textContent = String(s).padStart(
+        2,
+        "0",
+      );
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  } catch (err) {
+    console.log("Next race error:", err);
+    document.getElementById("raceName").textContent = "Data unavailable";
+  }
+}
+
+/* =====================================
+DRIVERS STANDINGS.
+======================================== */
+async function fetchDriverStandings() {
+  try {
+    const res = await fetch("https://api.jolpi.ca/ergast/f1/2026/driverstandings/");
+    const data = await res.json();
+    const standingsList = data.MRData.StandingsTable.StandingsLists[0];
+    const round = standingsList.round;
+    const standings = standingsList.DriverStandings;
+
+    document.getElementById('driverStandingsLabel').textContent = 
+      `Driver Standings — After Round ${round}`;
+
+    const container = document.getElementById('driverStandings');
+    container.innerHTML = '';
+
+    standings.slice(0, 5).forEach(s => {
+      const teamId = s.Constructors[0].constructorId;
+      const color = teamColors[teamId] || '#fff';
+      const item = document.createElement('div');
+      item.className = 'standing-item';
+      item.innerHTML = `
+        <span class="standing-pos">${s.position}</span>
+        <div class="standing-color" style="background: ${color}"></div>
+        <div style="flex:1">
+          <div class="standing-name">${s.Driver.familyName}</div>
+          <div class="standing-team">${s.Constructors[0].name}</div>
+        </div>
+        <span class="standing-pts">${s.points}</span>
+      `;
+      container.appendChild(item);
+    });
+  } catch (err) {
+    console.log('Driver standings error:', err);
+    document.getElementById('driverStandings').innerHTML = 
+      '<p style="color:rgba(255,255,255,0.3); font-size:12px;">Data unavailable</p>';
+  }
+}
+
+
+/* =====================================
+CONSTRUCTORS STANDINGS. 
+======================================== */
+async function fetchConstructorStandings() {
+  try {
+    const res = await fetch("https://api.jolpi.ca/ergast/f1/2026/constructorstandings/");
+    const data = await res.json();
+    const standingsList = data.MRData.StandingsTable.StandingsLists[0];
+    const round = standingsList.round;
+    const standings = standingsList.ConstructorStandings;
+
+    document.getElementById('constructorStandingsLabel').textContent = 
+      `Constructor Standings — After Round ${round}`;
+
+    const container = document.getElementById('constructorStandings');
+    container.innerHTML = '';
+
+    standings.slice(0, 5).forEach(s => {
+      const color = teamColors[s.Constructor.constructorId] || '#fff';
+      const item = document.createElement('div');
+      item.className = 'standing-item';
+      item.innerHTML = `
+        <span class="standing-pos">${s.position}</span>
+        <div class="standing-color" style="background: ${color}"></div>
+        <div style="flex:1">
+          <div class="standing-name">${s.Constructor.name}</div>
+        </div>
+        <span class="standing-pts">${s.points}</span>
+      `;
+      container.appendChild(item);
+    });
+  } catch (err) {
+    console.log('Constructor standings error:', err);
+    document.getElementById('constructorStandings').innerHTML = 
+      '<p style="color:rgba(255,255,255,0.3); font-size:12px;">Data unavailable</p>';
+  }
+}
+
+/* ========================================
+   RUN EVERYTHING
+======================================== */
+
+fetchDriverStandings();
+fetchConstructorStandings();
+fetchNextRace();

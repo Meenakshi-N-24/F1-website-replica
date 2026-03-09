@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@700;900&display=swap"
-      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&display=swap" rel="stylesheet">
     />
 
     <link rel="stylesheet" href="css/style.css" />
@@ -142,7 +142,6 @@
 
       <!-- Centered Content -->
       <div class="hero-content">
-
         <!-- Main headline -->
         <h1 class="hero-title">
           <span class="hero-title-top">THE WORLD OF</span>
@@ -188,6 +187,82 @@
         <div class="stat-card">
           <div class="stat-number">340</div>
           <div class="stat-label">KM/H Top Speed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE SEASON SECTION -->
+    <section class="season" id="season">
+      <!-- Section Header -->
+      <div class="season-header">
+        <div class="season-label">
+          <span class="season-label-line"></span>
+          <span class="season-label-text">Formula 1</span>
+        </div>
+        <h2 class="season-title">THE 2026 SEASON</h2>
+      </div>
+
+      <div class="season-grid">
+        <!-- NEXT RACE CARD -->
+        <div class="season-card next-race-card">
+          <div class="card-label">Next Race</div>
+          <div class="race-round" id="raceRound">—</div>
+
+          <div class="race-country" id="raceCountry">—</div>
+          <div class="race-name" id="raceName">Loading...</div>
+          <div class="race-location" id="raceLocation">—</div>
+          <div class="race-date" id="raceDate">—</div>
+
+          <!-- Countdown Timer -->
+          <div class="countdown">
+            <div class="countdown-block">
+              <span class="countdown-num" id="days">00</span>
+              <span class="countdown-label">Days</span>
+            </div>
+
+            <span class="countdown-sep">:</span>
+
+            <div class="countdown-block">
+              <span class="countdown-num" id="hours">00</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+
+            <span class="countdown-sep">:</span>
+
+            <div class="countdown-block">
+              <span class="countdown-num" id="minutes">00</span>
+              <span class="countdown-label">Mins</span>
+            </div>
+
+            <span class="countdown-sep">:</span>
+
+            <div class="countdown-block">
+              <span class="countdown-num" id="seconds">00</span>
+              <span class="countdown-label">Secs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DRIVER STANDINGS CARD -->
+        <div class="season-card standings-card">
+          <div class="card-label" id="driverStandingsLabel">Driver Standings</div>
+
+          <div class="standings-list" id="driverStandings">
+            <div class="standing-skeleton"></div>
+            <div class="standing-skeleton"></div>
+            <div class="standing-skeleton"></div>
+          </div>
+        </div>
+
+        <!-- CONSTRUCTOR STANDINGS CARD -->
+        <div class="season-card standings-card">
+          <div class="card-label" id="constructorStandingsLabel">Constructor Standings</div>
+
+          <div class="standings-list" id="constructorStandings">
+            <div class="standing-skeleton"></div>
+            <div class="standing-skeleton"></div>
+            <div class="standing-skeleton"></div>
+          </div>
         </div>
       </div>
     </section>
