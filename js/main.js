@@ -216,6 +216,29 @@ window.addEventListener("scroll", () => {
 });
 
 /* ========================================
+   PARALLAX HERO
+======================================== */
+const heroImg = document.querySelector('.hero-img');
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const rate = scrolled * 0.6; // 0.6 = speed, lower = more subtle
+  heroImg.style.transform = `translateY(${rate}px)`;
+});
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const heroContent = document.querySelector('.hero-content');
+  
+  // Fade + shrink text as you scroll
+  const opacity = 1 - scrolled / 500;
+  const scale = 1 - scrolled / 5000;
+  
+  heroContent.style.opacity = Math.max(0, opacity);
+  heroContent.style.transform = `translateY(${scrolled * 0.3}px) scale(${Math.max(0.85, scale)})`;
+});
+
+/* ========================================
    SEASON SECTION — Live F1 Data
 ======================================== */
 
@@ -227,11 +250,11 @@ const teamColors = {
   mclaren: "#FF8000",
   aston_martin: "#229971",
   alpine: "#FF87BC",
-  williams: "#64C4FF",
+  williams: "#1868DB",
   rb: "#6692FF",
-  audi: "#616161",
-  haas: "#fdc1c1",
-  cadillac: "#0f0000",
+  audi: "#EB4526",
+  haas: "#DFE1E2",
+  cadillac: "#000000",
 };
 
 /* COUNTRY FLAGS (SVG) */
@@ -410,3 +433,29 @@ async function fetchConstructorStandings() {
 fetchDriverStandings();
 fetchConstructorStandings();
 fetchNextRace();
+
+setTimeout(() => {
+  document.querySelectorAll('.f1-intro-title, .f1-intro-text, .f1-stat')
+    .forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+      revealObserver.observe(el);
+    });
+}, 100);
+
+/* ========================================
+   SCROLL REVEAL
+======================================== */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+// Observe all reveal elements
+document.querySelectorAll('.f1-intro-title, .f1-intro-text, .f1-stat')
+  .forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`; // stagger each element
+    revealObserver.observe(el);
+  });

@@ -1041,16 +1041,19 @@ body.no-scroll {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden; /* hides the extra height when image moves */
 }
 
 .hero-img {
   width: 100%;
-  height: 100%;
+  height: 110%; /* slightly taller than container so it has room to move */
   object-fit: cover;
   object-position: center;
   /* Fix backslash path issue */
   display: block;
   filter: contrast(1.1) saturate(1.2) sharpen(1);
+  will-change: transform; /* tells browser to optimize this for animation */
+  transition: none; /* remove any existing transition so it feels snappy */
 }
 
 /* ========================================
@@ -1194,88 +1197,135 @@ body.no-scroll {
 }
 
 /* ========================================
-   WHAT IS F1
+   WHAT IS F1 SECTION
 ======================================== */
-.what-is-f1 {
-  padding: 120px 60px;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-  text-align: center;
+.f1-intro {
+  width: 100%;
+  background: #000;
+  padding: 100px 80px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.section-title {
-  font-size: 48px;
-  font-weight: 900;
-  font-family: "Orbitron", sans-serif;
-  color: #fff;
-  margin-bottom: 30px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
-}
-
-.section-title.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.section-description {
-  font-size: 20px;
-  color: #aaa;
-  max-width: 800px;
-  margin: 0 auto 60px;
-  line-height: 1.8;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease 0.2s;
-}
-
-.section-description.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.stats-grid {
+.f1-intro-content {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
 }
 
-.stat-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 40px 20px;
-  transition: all 0.5s ease;
+/* ========================================
+   LEFT — TEXT
+======================================== */
+.f1-intro-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.f1-intro-title {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.f1-intro-title em {
+  color: #e10600;
+  font-style: normal;
+}
+
+.f1-intro-text {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+}
+
+/* ========================================
+   RIGHT — STATS GRID
+======================================== */
+.f1-intro-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.f1-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 32px 28px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.f1-stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #e10600;
+  transition: width 0.3s ease;
+}
+
+.f1-stat:hover::before {
+  width: 100%;
+}
+
+.f1-stat:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.f1-stat-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.f1-stat-num em {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e10600;
+  font-style: normal;
+  margin-left: 2px;
+}
+
+.f1-stat-label {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+/* Scroll reveal starting states */
+.f1-intro-title,
+.f1-intro-text,
+.f1-stat {
   opacity: 0;
   transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.stat-card.visible {
+.f1-intro-title.visible,
+.f1-intro-text.visible,
+.f1-stat.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.stat-card:hover {
-  background: rgba(225, 6, 0, 0.1);
-  border-color: #e10600;
-  transform: translateY(-10px);
-}
-
-.stat-number {
-  font-size: 56px;
-  font-weight: 900;
-  font-family: "Orbitron", sans-serif;
-  color: #e10600;
-  margin-bottom: 10px;
-}
-
-.stat-label {
-  font-size: 16px;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 /* ========================================
