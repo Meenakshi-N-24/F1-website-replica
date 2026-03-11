@@ -1,8 +1,4 @@
-/* ========================================
-   GLOBAL RESET & BASE STYLES
-   - Removes default browser spacing
-   - Sets box-sizing for easier sizing
-======================================== */
+/* ===================== GLOBAL RESET ===================== */
 * {
   margin: 0;
   padding: 0;
@@ -16,16 +12,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Locks scrolling when loading screen is active */
+/* Locks scrolling while loading screen is active */
 body.no-scroll {
   overflow: hidden;
 }
 
-/* ========================================
-   PRE-LOADER
-   - Shows before start button
-   - F1 red logo animates in then fades out
-======================================== */
+
+/* ===================== PRE-LOADER ===================== */
 .preloader {
   position: absolute;
   inset: 0;
@@ -34,9 +27,7 @@ body.no-scroll {
   justify-content: center;
   z-index: 3;
   background: #000;
-  transition:
-    opacity 0.6s ease,
-    visibility 0.6s ease;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 .preloader.hide {
@@ -45,7 +36,6 @@ body.no-scroll {
   pointer-events: none;
 }
 
-/* The F1 logo wrapper */
 .f1-logo-wrap {
   display: flex;
   flex-direction: column;
@@ -54,7 +44,6 @@ body.no-scroll {
   animation: logoEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* F1 logo - the big letters */
 .f1-logo {
   display: flex;
   align-items: center;
@@ -67,13 +56,10 @@ body.no-scroll {
   font-size: 120px;
   font-weight: 900;
   line-height: 1;
-  color: #e10600; /* F1 official red */
-  text-shadow:
-    0 0 40px rgba(225, 6, 0, 0.6),
-    0 0 80px rgba(225, 6, 0, 0.3);
+  color: #e10600;
+  text-shadow: 0 0 40px rgba(225, 6, 0, 0.6), 0 0 80px rgba(225, 6, 0, 0.3);
 }
 
-/* Tagline below logo */
 .f1-tagline {
   font-family: "Montserrat", sans-serif;
   font-size: 13px;
@@ -83,33 +69,22 @@ body.no-scroll {
   text-transform: uppercase;
 }
 
-/* Logo slides up + fades in */
 @keyframes logoEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ========================================
-   SKIP INTRO BUTTON
-   - Appears in top-right corner
-   - Allows users to skip the F1 loading sequence
-   - Fades in after 2 seconds
-======================================== */
+
+/* ===================== SKIP INTRO BUTTON ===================== */
 .skip-intro {
   position: fixed;
   top: 30px;
   right: 30px;
-  z-index: 10001; /* Above loading screen */
+  z-index: 10001;
   padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.05); /* Semi-transparent white */
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 30px; /* Pill shape */
+  border-radius: 30px;
   color: #fff;
   font-size: 13px;
   font-weight: 600;
@@ -117,19 +92,17 @@ body.no-scroll {
   letter-spacing: 1.5px;
   cursor: pointer;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px); /* Frosted glass effect */
-  animation: fadeIn 1s ease 0s both; /* Fades in after 2s delay */
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1s ease 0s both;
 }
 
-/* Hover state - red accent appears */
 .skip-intro:hover {
   background: rgba(225, 6, 0, 0.2);
   border-color: rgba(225, 6, 0, 0.6);
-  transform: translateY(-2px); /* Lifts slightly */
+  transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(225, 6, 0, 0.3);
 }
 
-/* Arrow icon after text animates on hover */
 .skip-intro::after {
   content: "→";
   margin-left: 8px;
@@ -138,81 +111,44 @@ body.no-scroll {
 }
 
 .skip-intro:hover::after {
-  transform: translateX(5px); /* Slides right */
+  transform: translateX(5px);
 }
 
-/* ========================================
-   LOADING SCREEN CONTAINER
-   - Full-screen overlay that appears on page load
-   - Contains F1 start button and lights sequence
-   - Background: Dark with subtle carbon fiber texture
-======================================== */
+
+/* ===================== LOADING SCREEN ===================== */
 .loading-screen {
   position: fixed;
-  inset: 0; /* Shorthand for top:0, right:0, bottom:0, left:0 */
+  inset: 0;
   background:
-    radial-gradient(
-      ellipse at top,
-      rgba(20, 20, 20, 1) 0%,
-      rgba(0, 0, 0, 1) 50%
-    ),
+    radial-gradient(ellipse at top, rgba(20, 20, 20, 1) 0%, rgba(0, 0, 0, 1) 50%),
     linear-gradient(135deg, #0a0a0a 0%, #000 50%, #0a0a0a 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 50px;
-  z-index: 10000; /* Sits above everything */
+  z-index: 10000;
   transition: opacity 0.8s ease;
   overflow: hidden;
 }
 
-/* Hidden state - fades out when loading completes */
 .loading-screen.hidden {
   opacity: 0;
-  pointer-events: none; /* Prevents interaction when hidden */
+  pointer-events: none;
 }
 
-/* ========================================
-   CARBON FIBER BACKGROUND TEXTURE
-   - Subtle crosshatch pattern
-   - Animates slowly for dynamic feel
-   - Keeps F1 racing aesthetic
-======================================== */
+/* Carbon fiber background texture */
 .loading-screen::before {
   content: "";
   position: absolute;
   inset: 0;
   background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(255, 255, 255, 0.03) 2px,
-      rgba(255, 255, 255, 0.03) 4px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(255, 255, 255, 0.03) 2px,
-      rgba(255, 255, 255, 0.03) 4px
-    );
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
   opacity: 0.3;
   animation: driftTexture 30s linear infinite;
 }
 
-/* Slowly drifts the texture diagonally */
-@keyframes driftTexture {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(20px, 20px);
-  }
-}
-
-/* Placeholder for removed vertical line - kept for future use */
 .loading-screen::after {
   content: "";
   position: absolute;
@@ -221,14 +157,15 @@ body.no-scroll {
   opacity: 0;
 }
 
-/* ========================================
-   START BUTTON CONTAINER
-   - Holds the main START button and status indicators
-   - Perfectly centered on screen using absolute positioning
-   - Fades in smoothly on page load
-======================================== */
+@keyframes driftTexture {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(20px, 20px); }
+}
+
+
+/* ===================== START BUTTON CONTAINER ===================== */
 .start-button-container {
-  display: none; /* Hidden by default — JS shows it */
+  display: none;
   opacity: 0;
   flex-direction: column;
   align-items: center;
@@ -237,138 +174,93 @@ body.no-scroll {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centers perfectly */
+  transform: translate(-50%, -50%);
   z-index: 2;
   background: transparent;
 }
 
-/* ========================================
-   MINIMAL START BUTTON
-   - Circular button (200x200px)
-   - Transparent with white outline (F1 minimalist style)
-   - Initiates the F1 lights sequence when clicked
-======================================== */
+
+/* ===================== START BUTTON ===================== */
 .start-btn {
   position: relative;
   width: 200px;
   height: 200px;
-  border-radius: 50%; /* Makes it circular */
+  border-radius: 50%;
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle white border */
+  border: 2px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth easing */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: visible;
 }
 
-/* ========================================
-   ANIMATED PROGRESS RING
-   - Appears on hover
-   - White spinning arc (like F1 pit timer)
-   - Rotates continuously for dynamic effect
-======================================== */
+/* Spinning ring on hover */
 .start-btn::before {
   content: "";
   position: absolute;
-  inset: -3px; /* Positions slightly outside button */
+  inset: -3px;
   border-radius: 50%;
   border: 2px solid transparent;
-  border-top-color: #fff; /* White arc on top */
-  border-right-color: #fff; /* White arc on right */
+  border-top-color: #fff;
+  border-right-color: #fff;
   animation: rotateRing 2s linear infinite;
-  opacity: 0; /* Hidden by default */
+  opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-/* Show the ring on hover */
 .start-btn:hover::before {
   opacity: 0.8;
 }
 
-/* Continuously rotates the ring */
-@keyframes rotateRing {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* ========================================
-   SUBTLE PULSE RING
-   - Always animating (even without hover)
-   - Subtle white pulse that expands/contracts
-   - Adds life to the button
-======================================== */
+/* Subtle pulse ring */
 .start-btn::after {
   content: "";
   position: absolute;
   inset: -2px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0); /* Invisible by default */
+  border: 1px solid rgba(255, 255, 255, 0);
   animation: pulseRing 2s ease-in-out infinite;
 }
 
-/* Pulse animation - expands and becomes visible, then contracts */
-@keyframes pulseRing {
-  0%,
-  100% {
-    transform: scale(1);
-    border-color: rgba(255, 255, 255, 0); /* Invisible */
-  }
-  50% {
-    transform: scale(1.08); /* Slightly larger */
-    border-color: rgba(255, 255, 255, 0.3); /* Visible white */
-  }
-}
-
-/* ========================================
-   BUTTON HOVER STATE
-   - Border becomes more visible (white)
-   - Button scales up slightly
-======================================== */
 .start-btn:hover {
-  border-color: rgba(255, 255, 255, 0.6); /* Brighter white border */
-  transform: scale(1.05); /* 5% larger */
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
 }
 
-/* Button pressed state - scales down */
 .start-btn:active {
   transform: scale(0.98);
 }
 
-/* ========================================
-   BUTTON TEXT - "START"
-   - Orbitron font (F1 racing style)
-   - Extra letter spacing for elegance
-   - Expands further on hover
-======================================== */
+@keyframes rotateRing {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1);    border-color: rgba(255, 255, 255, 0); }
+  50%       { transform: scale(1.08); border-color: rgba(255, 255, 255, 0.3); }
+}
+
+
+/* ===================== BUTTON ELEMENTS ===================== */
 .btn-text {
   font-family: "Orbitron", sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: #fff;
-  letter-spacing: 6px; /* Wide spacing */
+  letter-spacing: 6px;
   text-transform: uppercase;
   transition: all 0.3s ease;
 }
 
-/* Text expands even more on hover */
 .start-btn:hover .btn-text {
-  color: #fff;
   letter-spacing: 8px;
 }
 
-/* ========================================
-   BUTTON ICON - Checkered Flag Emoji
-   - Visual racing indicator
-   - Scales up on hover
-======================================== */
 .btn-icon {
   font-size: 36px;
   opacity: 0.9;
@@ -377,127 +269,63 @@ body.no-scroll {
 
 .start-btn:hover .btn-icon {
   opacity: 1;
-  transform: scale(1.1); /* Grows slightly */
+  transform: scale(1.1);
 }
 
-/* ========================================
-   MINIMAL F1 LABEL
-   - Small "F1" text at bottom of button
-   - Subtle branding element
-======================================== */
 .f1-label {
   position: absolute;
   bottom: 18px;
   font-family: "Orbitron", sans-serif;
   font-size: 10px;
   font-weight: 700;
-  color: rgba(255, 24, 1); /* Very subtle white */
+  color: rgb(255, 24, 1);
   letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-/* ========================================
-   STATUS INDICATORS - "READY" & "SYSTEM OK"
-   - Shows system status below button
-   - Pill-shaped container with blur effect
-   - Green dots indicate ready state
-======================================== */
+
+/* ===================== ENGINE INDICATORS ===================== */
 .engine-indicators {
   display: flex;
   gap: 32px;
   padding: 14px 32px;
-  background: rgba(0, 0, 0, 0.2); /* Dark semi-transparent */
+  background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px; /* Pill shape */
-  backdrop-filter: blur(5px); /* Frosted glass effect */
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
 }
 
-/* ========================================
-   INDIVIDUAL INDICATOR
-   - Each status line (READY, SYSTEM OK)
-   - Dot + text layout
-   - Pulses gently to show "alive" state
-======================================== */
 .indicator {
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.7); /* Slightly transparent white */
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  font-family: "Montserrat", sans-serif; /* Cleaner font than Orbitron */
+  font-family: "Montserrat", sans-serif;
   transition: all 0.3s ease;
   animation: indicatorPulse 3s ease-in-out infinite;
 }
 
-/* Stagger the animations so they don't pulse together */
-.indicator:nth-child(1) {
-  animation-delay: 0s; /* First indicator starts immediately */
-}
+.indicator:nth-child(1) { animation-delay: 0s; }
+.indicator:nth-child(2) { animation-delay: 1.5s; }
 
-.indicator:nth-child(2) {
-  animation-delay: 1.5s; /* Second indicator starts 1.5s later */
-}
-
-/* Gentle pulse animation - moves up/down and fades */
-@keyframes indicatorPulse {
-  0%,
-  100% {
-    opacity: 0.7;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-2px); /* Moves up slightly */
-  }
-}
-
-/* ========================================
-   STATUS INDICATOR DOT
-   - Green glowing dot
-   - Indicates "ready" status (like F1 green flag)
-   - Blinks independently for each indicator
-======================================== */
 .indicator-dot {
   width: 5px;
   height: 5px;
-  border-radius: 50%; /* Circular */
-  background: rgba(0, 255, 0, 0.9); /* Bright green */
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); /* Green glow */
+  border-radius: 50%;
+  background: rgba(0, 255, 0, 0.9);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
   animation: dotBlink 2s ease-in-out infinite;
 }
 
-/* Stagger dot blinks */
-.indicator:nth-child(1) .indicator-dot {
-  animation-delay: 0s;
-}
+.indicator:nth-child(1) .indicator-dot { animation-delay: 0s; }
+.indicator:nth-child(2) .indicator-dot { animation-delay: 1s; }
 
-.indicator:nth-child(2) .indicator-dot {
-  animation-delay: 1s; /* Second dot blinks 1s later */
-}
-
-/* Dot blink animation - fades and shrinks */
-@keyframes dotBlink {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.8); /* Smaller when dimmed */
-  }
-}
-
-/* ========================================
-   HINT TEXT - "Press to begin"
-   - Subtle instruction text
-   - Fades in and out gently
-======================================== */
 .start-hint {
-  color: rgba(255, 255, 255, 0.457); /* Very subtle white */
+  color: rgba(255, 255, 255, 0.457);
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 2px;
@@ -505,44 +333,30 @@ body.no-scroll {
   animation: fadeInOut 4s ease-in-out infinite;
 }
 
-/* Fade in/out animation for hint text */
+@keyframes indicatorPulse {
+  0%, 100% { opacity: 0.7; transform: translateY(0); }
+  50%       { opacity: 1;   transform: translateY(-2px); }
+}
+
+@keyframes dotBlink {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
 @keyframes fadeInOut {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.6;
-  }
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.6; }
 }
 
-/* ========================================
-   FADE IN ANIMATION
-   - Used for elements appearing on page load
-   - Slides up while fading in
-======================================== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px); /* Starts below */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0); /* Ends in place */
-  }
-}
 
-/* LOADING LIGHTS SEQUENCE*/
-
+/* ===================== F1 LIGHTS SEQUENCE ===================== */
 .f1-lights {
   display: flex;
   gap: 35px;
   padding: 30px 45px;
   background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
   border-radius: 20px;
-  box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.8),
-    inset 0 2px 4px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 2px 4px rgba(255, 255, 255, 0.05);
   border: 2px solid #222;
 }
 
@@ -551,9 +365,7 @@ body.no-scroll {
   height: 70px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #2a2a2a, #0d0d0d);
-  box-shadow:
-    inset 0 4px 10px rgba(0, 0, 0, 0.9),
-    0 2px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.9), 0 2px 6px rgba(0, 0, 0, 0.5);
   border: 3px solid #1a1a1a;
   position: relative;
   transition: all 0.4s ease;
@@ -588,15 +400,12 @@ body.no-scroll {
 }
 
 @keyframes lightGlow {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
 }
 
+
+/* ===================== LIGHTS OUT TEXT ===================== */
 .loading-text {
   text-align: center;
   font-family: "Orbitron", sans-serif;
@@ -610,20 +419,6 @@ body.no-scroll {
   animation: textPulse 0.8s ease;
 }
 
-@keyframes textPulse {
-  0% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 .loading-text span {
   display: block;
   font-size: 48px;
@@ -631,9 +426,7 @@ body.no-scroll {
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
-  text-shadow:
-    0 0 20px rgba(225, 6, 0, 0.6),
-    0 0 40px rgba(225, 6, 0, 0.3);
+  text-shadow: 0 0 20px rgba(225, 6, 0, 0.6), 0 0 40px rgba(225, 6, 0, 0.3);
 }
 
 .loading-text span:first-child {
@@ -642,6 +435,14 @@ body.no-scroll {
   margin-bottom: 8px;
 }
 
+@keyframes textPulse {
+  0%   { transform: scale(0.9); opacity: 0; }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+
+/* ===================== CHEQUERED FLAG ===================== */
 .chequered-flag {
   width: 260px;
   height: 18px;
@@ -654,11 +455,7 @@ body.no-scroll {
   opacity: 1;
 }
 
-/* ========================================
-   CHEQUERED FLAG OVERLAY
-   - Full screen GIF after lights out text
-   - Fades in dramatically then website opens
-======================================== */
+/* Flag GIF overlay */
 .flag-overlay {
   position: absolute;
   inset: 0;
@@ -679,12 +476,11 @@ body.no-scroll {
 .flag-gif {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills entire screen */
+  object-fit: cover;
 }
 
-/* ========================================
-   SCROLL PROGRESS
-======================================== */
+
+/* ===================== SCROLL PROGRESS ===================== */
 .scroll-progress {
   position: fixed;
   right: 30px;
@@ -715,9 +511,8 @@ body.no-scroll {
   box-shadow: 0 0 15px #e10600;
 }
 
-/* ========================================
-   CHAPTER INDICATOR
-======================================== */
+
+/* ===================== CHAPTER INDICATOR ===================== */
 .chapter-indicator {
   position: fixed;
   top: 120px;
@@ -748,32 +543,8 @@ body.no-scroll {
   margin: 8px 0;
 }
 
-/* ========================================
-   F1 LOGO
-======================================== */
-.logo-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
 
-.logo {
-  height: 24px;
-  cursor: pointer;
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
-  filter: brightness(1);
-}
-
-.logo:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
-}
-
-/* ========================================
-   NAVBAR
-======================================== */
+/* ===================== NAVBAR ===================== */
 .navbar {
   position: fixed;
   top: 0;
@@ -801,9 +572,8 @@ body.no-scroll {
   -webkit-backdrop-filter: blur(20px);
 }
 
-/* ========================================
-   F1 LOGO
-======================================== */
+
+/* ===================== F1 LOGO ===================== */
 .logo-link {
   display: flex;
   align-items: center;
@@ -813,9 +583,7 @@ body.no-scroll {
 .logo {
   height: 24px;
   cursor: pointer;
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   filter: brightness(1);
 }
 
@@ -824,9 +592,8 @@ body.no-scroll {
   transform: scale(1.05);
 }
 
-/* ========================================
-   NAV LINKS
-======================================== */
+
+/* ===================== NAV LINKS ===================== */
 .nav-links {
   display: flex;
   gap: 40px;
@@ -838,7 +605,7 @@ body.no-scroll {
   position: relative;
 }
 
-/* ADD THIS — invisible bridge fixes dropdown disappearing */
+/* Invisible bridge so dropdown doesn't close when moving cursor */
 .nav-item::after {
   content: "";
   position: absolute;
@@ -863,7 +630,7 @@ body.no-scroll {
   padding-bottom: 5px;
 }
 
-/* Red underline on hover,  Bridge gap between link and dropdown*/
+/* Red underline on hover */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -875,34 +642,23 @@ body.no-scroll {
   transition: width 0.3s ease;
 }
 
-.nav-link:hover {
-  color: #fff;
-}
+.nav-link:hover { color: #fff; }
+.nav-link:hover::after { width: 100%; }
 
-.nav-link:hover::after {
-  width: 100%;
-}
+/* Active state — always underlined */
+.nav-link.active { color: #fff; }
+.nav-link.active::after { width: 100%; }
 
-/* Active/current page — always underlined */
-.nav-link.active {
-  color: #fff;
-}
 
-.nav-link.active::after {
-  width: 100%;
-}
-
-/* ========================================
-   DROPDOWN
-======================================== */
+/* ===================== DROPDOWN ===================== */
 .dropdown {
   position: absolute;
-  top: calc(100% + 15px); /* reduced from 25px */
+  top: calc(100% + 15px);
   left: 0;
   background: rgba(10, 10, 10, 0.98);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: 2px solid #e10600; /* Red top accent */
+  border-top: 2px solid #e10600;
   border-radius: 0 0 8px 8px;
   padding: 8px 0;
   min-width: 180px;
@@ -913,7 +669,6 @@ body.no-scroll {
   z-index: 100;
 }
 
-/* Stays open on hover — fixed! */
 .nav-item:hover .dropdown {
   opacity: 1;
   pointer-events: all;
@@ -934,17 +689,15 @@ body.no-scroll {
   border-left: 2px solid transparent;
 }
 
-/* Highlight on hover — fixed! */
 .dropdown a:hover {
   color: #fff;
   background: rgba(225, 6, 0, 0.1);
-  border-left-color: #e10600; /* Red left accent on hover */
+  border-left-color: #e10600;
   padding-left: 28px;
 }
 
-/* ========================================
-   LIVE BUTTON
-======================================== */
+
+/* ===================== LIVE BUTTON ===================== */
 .live-timing {
   display: flex;
   align-items: center;
@@ -965,7 +718,6 @@ body.no-scroll {
   box-shadow: 0 4px 15px rgba(225, 6, 0, 0.3);
 }
 
-/* ✅ clock-icon is now OUTSIDE live-text — bug fixed! */
 .clock-icon {
   font-size: 18px;
   display: inline-block;
@@ -980,38 +732,11 @@ body.no-scroll {
   letter-spacing: 1px;
 }
 
-/* Stagger each line */
 
-@keyframes speedLine {
-  0% {
-    background-position: 100% 0;
-  }
-  100% {
-    background-position: -100% 0;
-  }
-}
-
-/* ========================================
-   PULSE ANIMATION
-======================================== */
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.75;
-    transform: scale(1.05);
-  } /* was 0.6 and 1.15 */
-}
-
-/* ========================================
-   HERO
-======================================== */
+/* ===================== HERO ===================== */
 .hero {
   position: relative;
-  z-index: 0; /* Does nothing, because hero children already control stacking. */
+  z-index: 0;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -1021,31 +746,24 @@ body.no-scroll {
   background: #000;
 }
 
-/* ========================================
-   BACKGROUND IMAGE
-======================================== */
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  overflow: hidden; /* hides the extra height when image moves */
+  overflow: hidden;
 }
 
 .hero-img {
   width: 100%;
-  height: 110%; /* slightly taller than container so it has room to move */
+  height: 110%;
   object-fit: cover;
   object-position: center 80%;
-  /* Fix backslash path issue */
   display: block;
-  filter: contrast(1.1) saturate(1.2) sharpen(1); /* keeping sharpen(1) as it's making a difference*/
-  will-change: transform; /* tells browser to optimize this for animation */
-  transition: none; /* remove any existing transition so it feels snappy */
+  filter: contrast(1.1) saturate(1.2);
+  will-change: transform;
+  transition: none;
 }
 
-/* ========================================
-   HERO CONTENT — Centered
-======================================== */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -1056,23 +774,16 @@ body.no-scroll {
   gap: 24px;
   padding: 0 20px;
   animation: heroFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
-  margin-top: -120px; /* ADD THIS — shifts content up */
+  margin-top: -120px;
 }
 
 @keyframes heroFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ========================================
-   MAIN HEADLINE
-======================================== */
+
+/* ===================== HERO TITLE ===================== */
 .hero-title {
   display: flex;
   flex-direction: column;
@@ -1083,8 +794,8 @@ body.no-scroll {
 
 .hero-title-top {
   font-family: "Titillium Web", sans-serif;
-  font-size: clamp(32px, 5vw, 64px); /* Scales with screen */
-  font-weight: 300; /* Thin — premium */
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 300;
   letter-spacing: 12px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.85);
@@ -1092,7 +803,7 @@ body.no-scroll {
 
 .hero-title-bottom {
   font-family: "Titillium Web", sans-serif;
-  font-size: clamp(64px, 12vw, 160px); /* Big and bold */
+  font-size: clamp(64px, 12vw, 160px);
   font-weight: 900;
   letter-spacing: -2px;
   text-transform: uppercase;
@@ -1100,16 +811,13 @@ body.no-scroll {
   line-height: 0.9;
 }
 
-/* The "1" in Formula 1 — red accent */
+/* Red "1" */
 .hero-title-bottom em {
   font-style: normal;
   color: #e10600;
-  margin-left: -35px; /* ADD THIS — pulls 1 closer */
+  margin-left: -35px;
 }
 
-/* ========================================
-   SUBHEADING
-======================================== */
 .hero-sub {
   font-family: "Titillium Web", sans-serif;
   font-size: 13px;
@@ -1120,9 +828,8 @@ body.no-scroll {
   margin-top: 8px;
 }
 
-/* ========================================
-   SCROLL INDICATOR — Animated Chevrons
-======================================== */
+
+/* ===================== HERO SCROLL INDICATOR ===================== */
 .hero-scroll {
   position: absolute;
   bottom: 40px;
@@ -1161,61 +868,104 @@ body.no-scroll {
   animation: chevronFade 1.5s ease-in-out infinite;
 }
 
-/* Each chevron fades in sequence — wave effect */
-.chevron:nth-child(1) {
-  animation-delay: 0s;
-}
-.chevron:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.chevron:nth-child(3) {
-  animation-delay: 0.4s;
-}
+.chevron:nth-child(1) { animation-delay: 0s; }
+.chevron:nth-child(2) { animation-delay: 0.2s; }
+.chevron:nth-child(3) { animation-delay: 0.4s; }
 
 @keyframes chevronFade {
-  0%,
-  100% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 1;
-    border-color: #e10600;
-  }
+  0%, 100% { opacity: 0.1; }
+  50%       { opacity: 1; border-color: #e10600; }
 }
 
-/* ========================================
-   WHAT IS F1 SECTION
-======================================== */
-.f1-intro {
+
+/* ===================== CINEMATIC — WHAT IS F1 ===================== */
+.f1-cinematic {
+  position: relative;
   width: 100%;
+  min-height: 100vh;
   background: #000;
-  padding: 100px 80px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  position: relative; /* ADD THIS */
-  z-index: 1; /* ADD THIS */
-  min-height: 100vh; /* ADD THIS — makes it full screen height */
   display: flex;
-  align-items: center; /* ADD THIS — vertically centers content */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.f1-intro-content {
+/* Red line that draws across screen */
+.cin-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #e10600;
+  z-index: 2;
+  box-shadow: 0 0 10px #e10600, 0 0 20px rgba(225, 6, 0, 0.5);
+}
+
+/* Words that slam in */
+.cin-words {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.cin-word {
+  font-family: "Titillium Web", sans-serif;
+  font-size: clamp(40px, 8vw, 100px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+/* Main content card */
+.cin-content {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 80px;
   align-items: center;
+  width: 100%;
+  padding: 80px;
+  opacity: 0;
+  position: relative;
+  z-index: 4;
+  background:
+    repeating-linear-gradient(
+      45deg, transparent, transparent 2px,
+      rgba(255, 255, 255, 0.012) 2px,
+      rgba(255, 255, 255, 0.012) 4px
+    ),
+    #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  margin: 80px;
 }
 
-/* ========================================
-   LEFT — TEXT
-======================================== */
-.f1-intro-left {
+/* Red top accent on content card */
+.cin-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #e10600, transparent);
+}
+
+.cin-left {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.f1-intro-title {
+.cin-title {
   font-family: "Titillium Web", sans-serif;
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 900;
@@ -1225,42 +975,41 @@ body.no-scroll {
   line-height: 1.1;
 }
 
-.f1-intro-title em {
+.cin-title em {
   color: #e10600;
   font-style: normal;
 }
 
-.f1-intro-text {
+.cin-text {
   font-family: "Titillium Web", sans-serif;
   font-size: 15px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.8;
-  letter-spacing: 0.3px;
 }
 
-/* ========================================
-   RIGHT — STATS GRID
-======================================== */
-.f1-intro-right {
+/* Stats grid */
+.cin-right {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
 
-.f1-stat {
+.cin-stat {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 32px 28px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.f1-stat::before {
+/* Red line that grows on hover */
+.cin-stat::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1271,15 +1020,15 @@ body.no-scroll {
   transition: width 0.3s ease;
 }
 
-.f1-stat:hover::before {
-  width: 100%;
+.cin-stat:hover::before { width: 100%; }
+
+.cin-stat:hover {
+  background: rgba(225, 6, 0, 0.05);
+  border-color: rgba(225, 6, 0, 0.3);
+  transform: translateY(-2px);
 }
 
-.f1-stat:hover {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.f1-stat-num {
+.cin-stat-num {
   font-family: "Orbitron", sans-serif;
   font-size: clamp(24px, 3vw, 36px);
   font-weight: 700;
@@ -1287,16 +1036,7 @@ body.no-scroll {
   line-height: 1;
 }
 
-.f1-stat-num em {
-  font-family: "Titillium Web", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #e10600;
-  font-style: normal;
-  margin-left: 2px;
-}
-
-.f1-stat-label {
+.cin-stat-label {
   font-family: "Titillium Web", sans-serif;
   font-size: 10px;
   font-weight: 600;
@@ -1304,17 +1044,9 @@ body.no-scroll {
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.3);
 }
-/* Scroll reveal starting states */
-.f1-intro-title.visible,
-.f1-intro-text.visible,
-.f1-stat.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
-/* ========================================
-   THE SEASON SECTION
-======================================== */
+
+/* ===================== THE SEASON ===================== */
 .season {
   position: relative;
   padding: 100px 80px;
@@ -1322,7 +1054,6 @@ body.no-scroll {
   overflow: hidden;
 }
 
-/* Subtle red glow accent top left */
 .season::before {
   content: "";
   position: absolute;
@@ -1334,7 +1065,6 @@ body.no-scroll {
   pointer-events: none;
 }
 
-/* Subtle red glow accent bottom right */
 .season::after {
   content: "";
   position: absolute;
@@ -1346,9 +1076,8 @@ body.no-scroll {
   pointer-events: none;
 }
 
-/* ========================================
-   SECTION HEADER
-======================================== */
+
+/* ===================== SEASON HEADER ===================== */
 .season-header {
   margin-bottom: 60px;
 }
@@ -1385,21 +1114,19 @@ body.no-scroll {
   text-transform: uppercase;
 }
 
-/* ========================================
-   SEASON GRID — 3 cards side by side
-======================================== */
+
+/* ===================== SEASON GRID ===================== */
 .season-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* equal columns now */
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 24px;
   position: relative;
   z-index: 1;
-  align-items: stretch; /* ADD THIS — forces all cards same height */
+  align-items: stretch;
 }
 
-/* ========================================
-   SEASON CARDS
-======================================== */
+
+/* ===================== SEASON CARDS ===================== */
 .season-card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -1409,14 +1136,14 @@ body.no-scroll {
   overflow: hidden;
   transition: border-color 0.3s ease;
   display: flex;
-  flex-direction: column; /* ADD THIS */
+  flex-direction: column;
 }
 
 .season-card:hover {
   border-color: rgba(225, 6, 0, 0.3);
 }
 
-/* Red top accent on cards */
+/* Red top accent */
 .season-card::before {
   content: "";
   position: absolute;
@@ -1437,14 +1164,13 @@ body.no-scroll {
   margin-bottom: 24px;
 }
 
-/* ========================================
-   NEXT RACE CARD
-======================================== */
+
+/* ===================== NEXT RACE CARD ===================== */
 .next-race-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* spreads elements evenly */
-  height: 100%; /* stretches to match siblings */
+  justify-content: space-between;
+  height: 100%;
 }
 
 .race-round {
@@ -1496,9 +1222,8 @@ body.no-scroll {
   text-transform: uppercase;
 }
 
-/* ========================================
-   COUNTDOWN TIMER
-======================================== */
+
+/* ===================== COUNTDOWN TIMER ===================== */
 .countdown {
   padding-top: 16px;
   display: flex;
@@ -1515,7 +1240,7 @@ body.no-scroll {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 4px;
   padding: 10px 12px;
-  flex: 1; /* fills available width equally */
+  flex: 1;
 }
 
 .countdown-num {
@@ -1544,9 +1269,8 @@ body.no-scroll {
   flex-shrink: 0;
 }
 
-/* ========================================
-   STANDINGS LIST
-======================================== */
+
+/* ===================== STANDINGS LIST ===================== */
 .standings-list {
   display: flex;
   flex-direction: column;
@@ -1575,16 +1299,10 @@ body.no-scroll {
   min-width: 20px;
 }
 
-/* Top 3 positions get red color */
-.standing-item:nth-child(1) .standing-pos {
-  color: #e10600;
-}
-.standing-item:nth-child(2) .standing-pos {
-  color: rgba(225, 6, 0, 0.6);
-}
-.standing-item:nth-child(3) .standing-pos {
-  color: rgba(225, 6, 0, 0.4);
-}
+/* Top 3 get red tints */
+.standing-item:nth-child(1) .standing-pos { color: #e10600; }
+.standing-item:nth-child(2) .standing-pos { color: rgba(225, 6, 0, 0.6); }
+.standing-item:nth-child(3) .standing-pos { color: rgba(225, 6, 0, 0.4); }
 
 .standing-color {
   width: 3px;
@@ -1618,7 +1336,7 @@ body.no-scroll {
   color: #fff;
 }
 
-/* Loading skeletons */
+/* Loading skeleton */
 .standing-skeleton {
   height: 48px;
   background: rgba(255, 255, 255, 0.03);
@@ -1627,326 +1345,27 @@ body.no-scroll {
 }
 
 @keyframes shimmer {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 0.7; }
 }
 
-/* ========================================
-   NAV CARDS
-======================================== */
-.nav-cards {
-  min-height: 100vh;
-  padding: 120px 60px;
-  background: #000;
-  display: flex;
-  gap: 50px;
-  align-items: center;
-  justify-content: center;
+
+/* ===================== SHARED ANIMATIONS ===================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.nav-card {
-  flex: 1;
-  height: 650px;
-  position: relative;
-  border-radius: 25px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  background: #0a0a0a;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+@keyframes pulse {
+  0%, 100% { opacity: 1;    transform: scale(1); }
+  50%       { opacity: 0.75; transform: scale(1.05); }
 }
 
-.nav-card:hover {
-  transform: translateY(-25px) scale(1.03);
-  border-color: #e10600;
-  box-shadow: 0 40px 80px rgba(225, 6, 0, 0.4);
-}
 
-.nav-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(225, 6, 0, 0.3) 0%,
-    transparent 100%
-  );
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  z-index: 1;
-}
-
-.nav-card:hover::before {
-  opacity: 1;
-}
-
-.card-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: grayscale(80%) brightness(0.4);
-  transition: all 0.6s ease;
-}
-
-.nav-card:hover .card-bg {
-  filter: grayscale(0%) brightness(0.6);
-  transform: scale(1.1);
-}
-
-.card-content {
-  position: relative;
-  z-index: 2;
-  padding: 60px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.card-title {
-  font-size: 64px;
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 20px;
-  font-family: "Orbitron", sans-serif;
-  transform: translateY(0);
-  transition: transform 0.6s ease;
-  text-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-}
-
-.nav-card:hover .card-title {
-  transform: translateY(-15px);
-}
-
-.card-subtitle {
-  font-size: 20px;
-  color: #ccc;
-  margin-bottom: 35px;
-  opacity: 0.9;
-  letter-spacing: 1px;
-}
-
-.card-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: #e10600;
-  font-size: 18px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.card-cta::after {
-  content: "→";
-  font-size: 24px;
-  transition: transform 0.4s ease;
-}
-
-.nav-card:hover .card-cta::after {
-  transform: translateX(15px);
-}
-
-/* ========================================
-   DID YOU KNOW
-======================================== */
-.did-you-know {
-  padding: 120px 60px;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-}
-
-.dyk-title {
-  font-size: 56px;
-  font-weight: 900;
-  font-family: "Orbitron", sans-serif;
-  color: #e10600;
-  text-align: center;
-  margin-bottom: 80px;
-  text-transform: uppercase;
-}
-
-.facts-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.fact-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 50px;
-  transition: all 0.5s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.fact-card::before {
-  content: "?";
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  font-size: 200px;
-  color: rgba(225, 6, 0, 0.05);
-  font-weight: 900;
-}
-
-.fact-card:hover {
-  background: rgba(225, 6, 0, 0.05);
-  border-color: #e10600;
-  transform: translateY(-10px);
-}
-
-.fact-text {
-  font-size: 24px;
-  color: #fff;
-  line-height: 1.6;
-  position: relative;
-  z-index: 1;
-}
-
-.fact-highlight {
-  color: #e10600;
-  font-weight: 700;
-}
-
-/* ========================================
-   DIVIDER
-======================================== */
-.sketchy-divider {
-  height: 150px;
-  background: #000;
-  position: relative;
-  overflow: hidden;
-}
-
-.sketchy-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 3px;
-}
-
-.sketchy-line svg {
-  width: 100%;
-  height: 100px;
-  position: absolute;
-  top: -50px;
-}
-
-/* ========================================
-   FOOTER
-======================================== */
-.footer {
-  background: #000;
-  padding: 100px 60px 50px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-}
-
-.checkered-flag {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background: repeating-linear-gradient(
-    45deg,
-    #fff,
-    #fff 25px,
-    #000 25px,
-    #000 50px
-  );
-  animation: flagWave 4s ease-in-out infinite;
-}
-
-@keyframes flagWave {
-  0%,
-  100% {
-    transform: translateX(0) scaleY(1);
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-  25% {
-    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
-  }
-  50% {
-    transform: translateX(25px) scaleY(0.9);
-    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
-  }
-  75% {
-    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
-  }
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.finish-line-text {
-  font-family: "Orbitron", sans-serif;
-  font-size: 56px;
-  font-weight: 900;
-  color: #e10600;
-  margin: 40px 0;
-  animation: finishPulse 3s ease infinite;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-}
-
-@keyframes finishPulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.05);
-  }
-}
-
-.footer-text {
-  font-size: 16px;
-  color: #666;
-  margin: 15px 0;
-}
-
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* ===================== RESPONSIVE ===================== */
 @media (max-width: 1024px) {
-  .stats-grid {
+  .cin-right {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .facts-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .nav-cards {
-    flex-direction: column;
-  }
-
-  .nav-card {
-    height: 500px;
-    width: 100%;
   }
 }
 
@@ -1973,51 +1392,8 @@ body.no-scroll {
     padding: calc(70px + 60px) 20px 0;
   }
 
-  .hero-content h1 {
-    font-size: 42px;
-  }
-
-  .hero-content p {
-    font-size: 16px;
-  }
-
-  .hero-car {
-    width: 80%;
-    right: -40px;
-  }
-
-  .section-title {
-    font-size: 36px;
-  }
-
-  .section-description {
-    font-size: 18px;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .card-title {
-    font-size: 48px;
-  }
-
-  .card-subtitle {
-    font-size: 16px;
-  }
-
-  .dyk-title {
-    font-size: 38px;
-  }
-
-  .fact-text {
-    font-size: 20px;
-  }
-
-  .finish-line-text {
-    font-size: 36px;
-  }
+  .hero-content h1 { font-size: 42px; }
+  .hero-content p  { font-size: 16px; }
 
   .f1-lights {
     gap: 18px;

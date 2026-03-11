@@ -6,27 +6,24 @@
     <title>The World of Formula 1</title>
 
     <!-- Google Fonts -->
-    <!-- FIX — two separate link tags -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&family=Titillium+Web:wght@300;400;600;700;900&display=swap"
       rel="stylesheet"
     />
 
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
 
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   </head>
+
   <body class="no-scroll">
+
+    <!-- ===================== LOADING SCREEN ===================== -->
     <div class="loading-screen" id="loadingScreen">
+
       <!-- PRE-LOADER -->
       <div class="preloader" id="preloader">
         <div class="f1-logo-wrap">
@@ -38,10 +35,10 @@
         </div>
       </div>
 
-      <!-- Skip Intro Button (ONLY ONE!) -->
+      <!-- SKIP INTRO BUTTON -->
       <button class="skip-intro" id="skipIntro">Skip Intro</button>
 
-      <!-- Start Button -->
+      <!-- START BUTTON -->
       <div class="start-button-container" id="startButton">
         <button class="start-btn">
           <span class="btn-icon">🏁</span>
@@ -61,7 +58,7 @@
         <p class="start-hint">Press to begin</p>
       </div>
 
-      <!-- F1 Lights -->
+      <!-- F1 LIGHTS -->
       <div class="f1-lights" id="f1Lights" style="display: none">
         <div class="light"></div>
         <div class="light"></div>
@@ -70,14 +67,16 @@
         <div class="light"></div>
       </div>
 
+      <!-- LIGHTS OUT TEXT -->
       <div class="loading-text" id="loadingText">
         <span>LIGHTS OUT</span>
         <span>& AWAY WE GO</span>
       </div>
 
+      <!-- CHEQUERED FLAG STRIP -->
       <div class="chequered-flag"></div>
 
-      <!-- CHEQUERED FLAG GIF -->
+      <!-- CHEQUERED FLAG GIF OVERLAY -->
       <div class="flag-overlay" id="flagOverlay">
         <img
           src="assets/Images/chequered.gif"
@@ -86,9 +85,12 @@
           id="flagGif"
         />
       </div>
-    </div>
 
-    <!-- SCROLL PROGRESS -->
+    </div>
+    <!-- ===================== END LOADING SCREEN ===================== -->
+
+
+    <!-- ===================== SCROLL PROGRESS ===================== -->
     <div class="scroll-progress" id="scrollProgress">
       <div class="progress-dot"></div>
       <div class="progress-dot"></div>
@@ -98,20 +100,22 @@
       <div class="progress-dot"></div>
     </div>
 
-    <!-- CHAPTER INDICATOR -->
+    <!-- ===================== CHAPTER INDICATOR ===================== -->
     <div class="chapter-indicator" id="chapterIndicator">
       <div class="chapter-number">01</div>
       <div class="chapter-divider"></div>
       <div class="chapter-name">HOME</div>
     </div>
 
-    <!-- NAVBAR -->
+    <!-- ===================== NAVBAR ===================== -->
     <nav class="navbar" id="navbar">
-      <!-- F1 Logo - clicks to official F1 website -->
+
+      <!-- F1 Logo — links to official F1 site -->
       <a href="https://www.formula1.com" target="_blank" class="logo-link">
         <img src="assets/Images/f1-logo1.png" alt="F1 Logo" class="logo" />
       </a>
 
+      <!-- Nav Links with dropdowns -->
       <ul class="nav-links">
         <li>
           <a class="nav-link active" href="#home">HOME</a>
@@ -133,101 +137,115 @@
         </li>
       </ul>
 
-      <!-- Live button - goes to F1 schedule page -->
+      <!-- Live Timing Button -->
       <div
         class="live-timing"
-        onclick="
-          window.open('https://www.formula1.com/en/racing/2026', '_blank')
-        "
+        onclick="window.open('https://www.formula1.com/en/racing/2026', '_blank')"
       >
         <span class="clock-icon">⏱</span>
         <span class="live-text">LIVE</span>
       </div>
-    </nav>
 
-    <!-- HERO -->
+    </nav>
+    <!-- ===================== END NAVBAR ===================== -->
+
+
+    <!-- ===================== HERO ===================== -->
     <section class="hero" id="home">
+
       <!-- Background Image -->
       <div class="hero-bg">
         <img src="assets/Images/hero1.png" alt="Formula 1" class="hero-img" />
       </div>
 
-      <!-- Centered Content -->
+      <!-- Hero Content -->
       <div class="hero-content">
-        <!-- Main headline -->
         <h1 class="hero-title">
           <span class="hero-title-top">THE WORLD OF</span>
           <span class="hero-title-bottom">FORMULA <em>1</em></span>
         </h1>
-
-        <!-- Subheading -->
         <p class="hero-sub">Speed. Power. Legacy.</p>
       </div>
-      <!-- ✅ hero-content closes HERE -->
 
-      <!-- Scroll indicator — OUTSIDE hero-content -->
+      <!-- Scroll Indicator -->
       <div class="hero-scroll">
         <span class="hero-scroll-text">Scroll</span>
         <div class="hero-chevrons">
           <span class="chevron"></span>
         </div>
       </div>
-    </section>
-    <!-- ✅ hero section closes HERE -->
 
-    <!-- WHAT IS F1 SECTION -->
-    <section class="f1-intro" id="about">
-      <div class="f1-intro-content">
-        <!-- Left — Text -->
-        <div class="f1-intro-left">
+    </section>
+    <!-- ===================== END HERO ===================== -->
+
+
+    <!-- ===================== WHAT IS F1 — CINEMATIC ===================== -->
+    <section class="f1-cinematic" id="about">
+
+      <!-- Red line that draws across -->
+      <div class="cin-line"></div>
+
+      <!-- Words that slam in -->
+      <div class="cin-words">
+        <div class="cin-word" data-delay="0">FASTEST.</div>
+        <div class="cin-word" data-delay="0.15">MOST DANGEROUS.</div>
+        <div class="cin-word" data-delay="0.3">MOST WATCHED.</div>
+      </div>
+
+      <!-- Main content card -->
+      <div class="cin-content">
+        <div class="cin-left">
           <div class="season-label">
             <span class="season-label-line"></span>
             <span class="season-label-text">Since 1950</span>
           </div>
-          <h2 class="f1-intro-title">WHAT IS<br />FORMULA <em>1</em>?</h2>
-          <p class="f1-intro-text">
+          <h2 class="cin-title">WHAT IS<br />FORMULA <em>1</em>?</h2>
+          <p class="cin-text">
             Formula 1 is the pinnacle of motorsport — the fastest, most
             technologically advanced racing series on the planet.
           </p>
-          <p class="f1-intro-text">
-            Eleven constructor teams, twenty two of the world's greatest
-            drivers, and machines capable of exceeding 350 km/h — all pushing
-            the boundaries of human and engineering excellence, race after race.
+          <p class="cin-text">
+            Ten teams. Twenty drivers. Machines capable of exceeding 350 km/h.
+            Every race pushing the limits of human and engineering performance.
           </p>
         </div>
 
-        <!-- Right — Stats -->
-        <div class="f1-intro-right">
-          <div class="f1-stat">
-            <span class="f1-stat-num">1950</span>
-            <span class="f1-stat-label">Year Founded</span>
+        <!-- Animated stats grid -->
+        <div class="cin-right">
+          <div class="cin-stat" data-target="1950">
+            <span class="cin-stat-num">0</span>
+            <span class="cin-stat-label">Year Founded</span>
           </div>
-          <div class="f1-stat">
-            <span class="f1-stat-num">24</span>
-            <span class="f1-stat-label">Races Per Season</span>
+          <div class="cin-stat" data-target="24">
+            <span class="cin-stat-num">0</span>
+            <span class="cin-stat-label">Races Per Season</span>
           </div>
-          <div class="f1-stat">
-            <span class="f1-stat-num">10</span>
-            <span class="f1-stat-label">Constructor Teams</span>
+          <div class="cin-stat" data-target="10">
+            <span class="cin-stat-num">0</span>
+            <span class="cin-stat-label">Constructor Teams</span>
           </div>
-          <div class="f1-stat">
-            <span class="f1-stat-num">20</span>
-            <span class="f1-stat-label">Drivers On The Grid</span>
+          <div class="cin-stat" data-target="20">
+            <span class="cin-stat-num">0</span>
+            <span class="cin-stat-label">Drivers On The Grid</span>
           </div>
-          <div class="f1-stat">
-            <span class="f1-stat-num">350<em>km/h</em></span>
-            <span class="f1-stat-label">Top Speed</span>
+          <div class="cin-stat" data-target="350">
+            <span class="cin-stat-num">0</span>
+            <span class="cin-stat-label">Top Speed km/h</span>
           </div>
-          <div class="f1-stat">
-            <span class="f1-stat-num">1.5<em>bn</em></span>
-            <span class="f1-stat-label">Global Fans</span>
+          <div class="cin-stat" data-target="1500000000">
+            <span class="cin-stat-num">0</span>
+            <span class="cin-stat-label">Global Fans</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- THE SEASON SECTION -->
+    </section>
+    <!-- ===================== END CINEMATIC ===================== -->
+
+
+    <!-- ===================== THE SEASON ===================== -->
     <section class="season" id="season">
+
       <!-- Section Header -->
       <div class="season-header">
         <div class="season-label">
@@ -237,40 +255,34 @@
         <h2 class="season-title">THE 2026 SEASON</h2>
       </div>
 
+      <!-- Three cards: Next Race, Driver Standings, Constructor Standings -->
       <div class="season-grid">
+
         <!-- NEXT RACE CARD -->
         <div class="season-card next-race-card">
           <div class="card-label">Next Race</div>
           <div class="race-round" id="raceRound">—</div>
-
           <div class="race-country" id="raceCountry">—</div>
           <div class="race-name" id="raceName">Loading...</div>
           <div class="race-location" id="raceLocation">—</div>
           <div class="race-date" id="raceDate">—</div>
-
           <!-- Countdown Timer -->
           <div class="countdown">
             <div class="countdown-block">
               <span class="countdown-num" id="days">00</span>
               <span class="countdown-label">Days</span>
             </div>
-
             <span class="countdown-sep">:</span>
-
             <div class="countdown-block">
               <span class="countdown-num" id="hours">00</span>
               <span class="countdown-label">Hours</span>
             </div>
-
             <span class="countdown-sep">:</span>
-
             <div class="countdown-block">
               <span class="countdown-num" id="minutes">00</span>
               <span class="countdown-label">Mins</span>
             </div>
-
             <span class="countdown-sep">:</span>
-
             <div class="countdown-block">
               <span class="countdown-num" id="seconds">00</span>
               <span class="countdown-label">Secs</span>
@@ -280,10 +292,7 @@
 
         <!-- DRIVER STANDINGS CARD -->
         <div class="season-card standings-card">
-          <div class="card-label" id="driverStandingsLabel">
-            Driver Standings
-          </div>
-
+          <div class="card-label" id="driverStandingsLabel">Driver Standings</div>
           <div class="standings-list" id="driverStandings">
             <div class="standing-skeleton"></div>
             <div class="standing-skeleton"></div>
@@ -293,136 +302,24 @@
 
         <!-- CONSTRUCTOR STANDINGS CARD -->
         <div class="season-card standings-card">
-          <div class="card-label" id="constructorStandingsLabel">
-            Constructor Standings
-          </div>
-
+          <div class="card-label" id="constructorStandingsLabel">Constructor Standings</div>
           <div class="standings-list" id="constructorStandings">
             <div class="standing-skeleton"></div>
             <div class="standing-skeleton"></div>
             <div class="standing-skeleton"></div>
           </div>
         </div>
+
       </div>
+
     </section>
+    <!-- ===================== END SEASON ===================== -->
 
-    <!-- NAV CARDS -->
-    <section class="nav-cards" id="navigate" data-section="2">
-      <div class="nav-card">
-        <div
-          class="card-bg"
-          style="
-            background-image: url(&quot;https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&quot;);
-          "
-        ></div>
-        <div class="card-content">
-          <h2 class="card-title">THE GRID</h2>
-          <p class="card-subtitle">Teams • Drivers • Circuits</p>
-          <span class="card-cta">Explore</span>
-        </div>
-      </div>
 
-      <div class="nav-card">
-        <div
-          class="card-bg"
-          style="
-            background-image: url(&quot;https://images.unsplash.com/photo-1541443131876-44b03de101c5?q=80&w=2070&quot;);
-          "
-        ></div>
-        <div class="card-content">
-          <h2 class="card-title">LEGACY</h2>
-          <p class="card-subtitle">History • Records • Icons</p>
-          <span class="card-cta">Discover</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- DID YOU KNOW -->
-    <section class="did-you-know" id="facts" data-section="3">
-      <h2 class="dyk-title">Did You Know?</h2>
-      <div class="facts-grid">
-        <div class="fact-card">
-          <p class="fact-text">
-            F1 brakes can reach temperatures of
-            <span class="fact-highlight">1000°C</span>
-            – hot enough to glow red in the dark during night races.
-          </p>
-        </div>
-        <div class="fact-card">
-          <p class="fact-text">
-            Drivers lose an average of
-            <span class="fact-highlight">4kg</span> of body weight per race due
-            to extreme physical exertion and heat.
-          </p>
-        </div>
-        <div class="fact-card">
-          <p class="fact-text">
-            Modern F1 engines rev up to
-            <span class="fact-highlight">15,000 RPM</span>
-            and produce over 1000 horsepower from just 1.6 liters.
-          </p>
-        </div>
-        <div class="fact-card">
-          <p class="fact-text">
-            An F1 car can go from
-            <span class="fact-highlight">0 to 100 km/h and back to 0</span>
-            in less than 5 seconds combined.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIVIDER -->
-    <div class="sketchy-divider" data-section="4">
-      <div class="sketchy-line">
-        <svg viewBox="0 0 1200 100">
-          <path
-            d="M 0 50 Q 150 20, 300 50 T 600 50 T 900 50 T 1200 50"
-            stroke="#E10600"
-            stroke-width="3"
-            fill="none"
-            stroke-dasharray="2000"
-            stroke-dashoffset="2000"
-          >
-            <animate
-              attributeName="stroke-dashoffset"
-              from="2000"
-              to="0"
-              dur="3s"
-              fill="freeze"
-            />
-          </path>
-          <path
-            d="M 0 55 Q 150 75, 300 55 T 600 55 T 900 55 T 1200 55"
-            stroke="#fff"
-            stroke-width="2"
-            fill="none"
-            stroke-dasharray="2000"
-            stroke-dashoffset="2000"
-          >
-            <animate
-              attributeName="stroke-dashoffset"
-              from="2000"
-              to="0"
-              dur="3s"
-              begin="0.2s"
-              fill="freeze"
-            />
-          </path>
-        </svg>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer" data-section="5">
-      <div class="checkered-flag"></div>
-      <div class="footer-content">
-        <div class="finish-line-text">FINISH LINE</div>
-        <p class="footer-text">© 2026 The World of Formula 1</p>
-        <p class="footer-text">Built with ❤️ and adrenaline</p>
-      </div>
-    </footer>
     <!-- Main JavaScript -->
     <script src="js/main.js"></script>
+
   </body>
 </html>
+
+
