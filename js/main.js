@@ -141,7 +141,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll(".what-is-f1").forEach((section) => {
+document.querySelectorAll(".f1-intro").forEach((section) => {
   observer.observe(section);
 });
 
@@ -216,27 +216,115 @@ window.addEventListener("scroll", () => {
 });
 
 /* ========================================
-   PARALLAX HERO
+   GSAP SCROLL ANIMATIONS
 ======================================== */
-const heroImg = document.querySelector('.hero-img');
+if (typeof gsap !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
 
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  const rate = scrolled * 0.6; // 0.6 = speed, lower = more subtle
-  heroImg.style.transform = `translateY(${rate}px)`;
+  // Parallax hero image
+  gsap.to(".hero-img", {
+    yPercent: 30,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+    },
+  });
+
+  // Hero content fades + floats up as you scroll away
+  gsap.to(".hero-content", {
+    yPercent: -20,
+    opacity: 0,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top top",
+      end: "60% top",
+      scrub: true,
+    },
+  });
+}
+
+// Hero scroll indicator fades out quickly
+gsap.to(".hero-scroll", {
+  opacity: 0,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".hero",
+    start: "top top",
+    end: "20% top",
+    scrub: true,
+  },
 });
 
-window.addEventListener('scroll', () => {
-  const scrolled = window.scrollY;
-  const heroContent = document.querySelector('.hero-content');
-  
-  // Fade + shrink text as you scroll
-  const opacity = 1 - scrolled / 500;
-  const scale = 1 - scrolled / 5000;
-  
-  heroContent.style.opacity = Math.max(0, opacity);
-  heroContent.style.transform = `translateY(${scrolled * 0.3}px) scale(${Math.max(0.85, scale)})`;
-});
+// What is F1 — title reveals
+gsap.fromTo(
+  ".f1-intro-title",
+  { opacity: 0, y: 60 },
+  {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".f1-intro-title",
+      start: "top 85%",
+    },
+  },
+);
+
+// Text paragraphs stagger in
+gsap.fromTo(
+  ".f1-intro-text",
+  { opacity: 0, y: 40 },
+  {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".f1-intro-text",
+      start: "top 85%",
+    },
+  },
+);
+
+// Stats cascade in one by one
+gsap.fromTo(
+  ".f1-stat",
+  { opacity: 0, y: 50 },
+  {
+    opacity: 1,
+    y: 0,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".f1-intro-right",
+      start: "top 80%",
+    },
+  },
+);
+
+// Season section fades in
+gsap.fromTo(
+  ".season-card",
+  { opacity: 0, y: 60 },
+  {
+    opacity: 1,
+    y: 0,
+    duration: 0.7,
+    stagger: 0.15,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".season-grid",
+      start: "top 80%",
+    },
+  },
+);
 
 /* ========================================
    SEASON SECTION — Live F1 Data
@@ -298,11 +386,13 @@ async function fetchNextRace() {
     const raceDateTime = new Date(`${race.date}T${race.time || "00:00:00"}`);
 
     const country = race.Circuit.Location.country;
-    const code = countryFlags[country];
+    const code = countryFlags[country] || "un";
 
     document.getElementById("raceCountry").innerHTML =
-      `<img src="https://flagcdn.com/24x18/${code}.png" style="margin-right:6px;vertical-align:middle;"> ${country}`;
-      document.getElementById("raceRound").textContent = `Round ${race.round}`;
+      `<img src="https://flagcdn.com/24x18/${code}.png" 
+style="margin-right:6px;vertical-align:middle;"> ${country}`;
+
+    document.getElementById("raceRound").textContent = `Round ${race.round}`;
 
     document.getElementById("raceName").textContent = race.raceName;
 
@@ -352,23 +442,25 @@ DRIVERS STANDINGS.
 ======================================== */
 async function fetchDriverStandings() {
   try {
-    const res = await fetch("https://api.jolpi.ca/ergast/f1/2026/driverstandings/");
+    const res = await fetch(
+      "https://api.jolpi.ca/ergast/f1/2026/driverstandings/",
+    );
     const data = await res.json();
     const standingsList = data.MRData.StandingsTable.StandingsLists[0];
     const round = standingsList.round;
     const standings = standingsList.DriverStandings;
 
-    document.getElementById('driverStandingsLabel').textContent = 
+    document.getElementById("driverStandingsLabel").textContent =
       `Driver Standings — After Round ${round}`;
 
-    const container = document.getElementById('driverStandings');
-    container.innerHTML = '';
+    const container = document.getElementById("driverStandings");
+    container.innerHTML = "";
 
-    standings.slice(0, 5).forEach(s => {
+    standings.slice(0, 5).forEach((s) => {
       const teamId = s.Constructors[0].constructorId;
-      const color = teamColors[teamId] || '#fff';
-      const item = document.createElement('div');
-      item.className = 'standing-item';
+      const color = teamColors[teamId] || "#fff";
+      const item = document.createElement("div");
+      item.className = "standing-item";
       item.innerHTML = `
         <span class="standing-pos">${s.position}</span>
         <div class="standing-color" style="background: ${color}"></div>
@@ -381,34 +473,35 @@ async function fetchDriverStandings() {
       container.appendChild(item);
     });
   } catch (err) {
-    console.log('Driver standings error:', err);
-    document.getElementById('driverStandings').innerHTML = 
+    console.log("Driver standings error:", err);
+    document.getElementById("driverStandings").innerHTML =
       '<p style="color:rgba(255,255,255,0.3); font-size:12px;">Data unavailable</p>';
   }
 }
-
 
 /* =====================================
 CONSTRUCTORS STANDINGS. 
 ======================================== */
 async function fetchConstructorStandings() {
   try {
-    const res = await fetch("https://api.jolpi.ca/ergast/f1/2026/constructorstandings/");
+    const res = await fetch(
+      "https://api.jolpi.ca/ergast/f1/2026/constructorstandings/",
+    );
     const data = await res.json();
     const standingsList = data.MRData.StandingsTable.StandingsLists[0];
     const round = standingsList.round;
     const standings = standingsList.ConstructorStandings;
 
-    document.getElementById('constructorStandingsLabel').textContent = 
+    document.getElementById("constructorStandingsLabel").textContent =
       `Constructor Standings — After Round ${round}`;
 
-    const container = document.getElementById('constructorStandings');
-    container.innerHTML = '';
+    const container = document.getElementById("constructorStandings");
+    container.innerHTML = "";
 
-    standings.slice(0, 5).forEach(s => {
-      const color = teamColors[s.Constructor.constructorId] || '#fff';
-      const item = document.createElement('div');
-      item.className = 'standing-item';
+    standings.slice(0, 5).forEach((s) => {
+      const color = teamColors[s.Constructor.constructorId] || "#fff";
+      const item = document.createElement("div");
+      item.className = "standing-item";
       item.innerHTML = `
         <span class="standing-pos">${s.position}</span>
         <div class="standing-color" style="background: ${color}"></div>
@@ -420,8 +513,8 @@ async function fetchConstructorStandings() {
       container.appendChild(item);
     });
   } catch (err) {
-    console.log('Constructor standings error:', err);
-    document.getElementById('constructorStandings').innerHTML = 
+    console.log("Constructor standings error:", err);
+    document.getElementById("constructorStandings").innerHTML =
       '<p style="color:rgba(255,255,255,0.3); font-size:12px;">Data unavailable</p>';
   }
 }
@@ -433,29 +526,3 @@ async function fetchConstructorStandings() {
 fetchDriverStandings();
 fetchConstructorStandings();
 fetchNextRace();
-
-setTimeout(() => {
-  document.querySelectorAll('.f1-intro-title, .f1-intro-text, .f1-stat')
-    .forEach((el, i) => {
-      el.style.transitionDelay = `${i * 0.08}s`;
-      revealObserver.observe(el);
-    });
-}, 100);
-
-/* ========================================
-   SCROLL REVEAL
-======================================== */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.15 });
-
-// Observe all reveal elements
-document.querySelectorAll('.f1-intro-title, .f1-intro-text, .f1-stat')
-  .forEach((el, i) => {
-    el.style.transitionDelay = `${i * 0.08}s`; // stagger each element
-    revealObserver.observe(el);
-  });

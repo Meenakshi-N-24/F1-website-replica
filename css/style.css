@@ -774,8 +774,6 @@ body.no-scroll {
 /* ========================================
    NAVBAR
 ======================================== */
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&display=swap");
-
 .navbar {
   position: fixed;
   top: 0;
@@ -983,18 +981,6 @@ body.no-scroll {
 }
 
 /* Stagger each line */
-.speed-line:nth-child(1) {
-  animation-delay: 0s;
-  opacity: 1;
-}
-.speed-line:nth-child(2) {
-  animation-delay: 0.3s;
-  opacity: 0.6;
-}
-.speed-line:nth-child(3) {
-  animation-delay: 0.6s;
-  opacity: 0.3;
-}
 
 @keyframes speedLine {
   0% {
@@ -1025,6 +1011,7 @@ body.no-scroll {
 ======================================== */
 .hero {
   position: relative;
+  z-index: 0; /* Does nothing, because hero children already control stacking. */
   width: 100%;
   height: 100vh;
   display: flex;
@@ -1048,10 +1035,10 @@ body.no-scroll {
   width: 100%;
   height: 110%; /* slightly taller than container so it has room to move */
   object-fit: cover;
-  object-position: center;
+  object-position: center 80%;
   /* Fix backslash path issue */
   display: block;
-  filter: contrast(1.1) saturate(1.2) sharpen(1);
+  filter: contrast(1.1) saturate(1.2) sharpen(1); /* keeping sharpen(1) as it's making a difference*/
   will-change: transform; /* tells browser to optimize this for animation */
   transition: none; /* remove any existing transition so it feels snappy */
 }
@@ -1205,6 +1192,11 @@ body.no-scroll {
   padding: 100px 80px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative; /* ADD THIS */
+  z-index: 1; /* ADD THIS */
+  min-height: 100vh; /* ADD THIS — makes it full screen height */
+  display: flex;
+  align-items: center; /* ADD THIS — vertically centers content */
 }
 
 .f1-intro-content {
@@ -1224,7 +1216,7 @@ body.no-scroll {
 }
 
 .f1-intro-title {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 900;
   color: #fff;
@@ -1239,7 +1231,7 @@ body.no-scroll {
 }
 
 .f1-intro-text {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-size: 15px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.55);
@@ -1269,7 +1261,7 @@ body.no-scroll {
 }
 
 .f1-stat::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -1288,7 +1280,7 @@ body.no-scroll {
 }
 
 .f1-stat-num {
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: clamp(24px, 3vw, 36px);
   font-weight: 700;
   color: #fff;
@@ -1296,7 +1288,7 @@ body.no-scroll {
 }
 
 .f1-stat-num em {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #e10600;
@@ -1305,7 +1297,7 @@ body.no-scroll {
 }
 
 .f1-stat-label {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -1313,14 +1305,6 @@ body.no-scroll {
   color: rgba(255, 255, 255, 0.3);
 }
 /* Scroll reveal starting states */
-.f1-intro-title,
-.f1-intro-text,
-.f1-stat {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
 .f1-intro-title.visible,
 .f1-intro-text.visible,
 .f1-stat.visible {
