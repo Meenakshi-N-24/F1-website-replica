@@ -759,7 +759,7 @@ body.no-scroll {
   object-fit: cover;
   object-position: center 80%;
   display: block;
-  filter: contrast(1.1) saturate(1.2);
+  filter: contrast(1.1) saturate(1.2) sharpen(1); /*I know sharpen (1) isn't a real CSS element but it works for me*/
   will-change: transform;
   transition: none;
 }
@@ -795,7 +795,7 @@ body.no-scroll {
 .hero-title-top {
   font-family: "Titillium Web", sans-serif;
   font-size: clamp(32px, 5vw, 64px);
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: 12px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.85);
@@ -803,19 +803,17 @@ body.no-scroll {
 
 .hero-title-bottom {
   font-family: "Titillium Web", sans-serif;
-  font-size: clamp(64px, 12vw, 160px);
-  font-weight: 900;
-  letter-spacing: -2px;
-  text-transform: uppercase;
+  font-size: clamp(70px, 25vw, 150px);
+  font-weight: 700;
+  letter-spacing: 12px; /* wider spacing like IMG 2 */
   color: #fff;
-  line-height: 0.9;
 }
 
 /* Red "1" */
 .hero-title-bottom em {
   font-style: normal;
   color: #e10600;
-  margin-left: -35px;
+  margin-left: 10px; /* pushes the 1 away from A */
 }
 
 .hero-sub {
@@ -825,7 +823,7 @@ body.no-scroll {
   letter-spacing: 6px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.3);
-  margin-top: 8px;
+  margin-top: 3px;
 }
 
 
