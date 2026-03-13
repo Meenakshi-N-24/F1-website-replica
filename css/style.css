@@ -17,7 +17,6 @@ body.no-scroll {
   overflow: hidden;
 }
 
-
 /* ===================== PRE-LOADER ===================== */
 .preloader {
   position: absolute;
@@ -27,7 +26,9 @@ body.no-scroll {
   justify-content: center;
   z-index: 3;
   background: #000;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
 }
 
 .preloader.hide {
@@ -57,7 +58,9 @@ body.no-scroll {
   font-weight: 900;
   line-height: 1;
   color: #e10600;
-  text-shadow: 0 0 40px rgba(225, 6, 0, 0.6), 0 0 80px rgba(225, 6, 0, 0.3);
+  text-shadow:
+    0 0 40px rgba(225, 6, 0, 0.6),
+    0 0 80px rgba(225, 6, 0, 0.3);
 }
 
 .f1-tagline {
@@ -70,10 +73,15 @@ body.no-scroll {
 }
 
 @keyframes logoEntrance {
-  from { opacity: 0; transform: translateY(30px) scale(0.95); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
-
 
 /* ===================== SKIP INTRO BUTTON ===================== */
 .skip-intro {
@@ -114,13 +122,16 @@ body.no-scroll {
   transform: translateX(5px);
 }
 
-
 /* ===================== LOADING SCREEN ===================== */
 .loading-screen {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse at top, rgba(20, 20, 20, 1) 0%, rgba(0, 0, 0, 1) 50%),
+    radial-gradient(
+      ellipse at top,
+      rgba(20, 20, 20, 1) 0%,
+      rgba(0, 0, 0, 1) 50%
+    ),
     linear-gradient(135deg, #0a0a0a 0%, #000 50%, #0a0a0a 100%);
   display: flex;
   flex-direction: column;
@@ -143,8 +154,20 @@ body.no-scroll {
   position: absolute;
   inset: 0;
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px),
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
   opacity: 0.3;
   animation: driftTexture 30s linear infinite;
 }
@@ -158,10 +181,13 @@ body.no-scroll {
 }
 
 @keyframes driftTexture {
-  0%   { transform: translate(0, 0); }
-  100% { transform: translate(20px, 20px); }
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, 20px);
+  }
 }
-
 
 /* ===================== START BUTTON CONTAINER ===================== */
 .start-button-container {
@@ -178,7 +204,6 @@ body.no-scroll {
   z-index: 2;
   background: transparent;
 }
-
 
 /* ===================== START BUTTON ===================== */
 .start-btn {
@@ -236,15 +261,25 @@ body.no-scroll {
 }
 
 @keyframes rotateRing {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulseRing {
-  0%, 100% { transform: scale(1);    border-color: rgba(255, 255, 255, 0); }
-  50%       { transform: scale(1.08); border-color: rgba(255, 255, 255, 0.3); }
+  0%,
+  100% {
+    transform: scale(1);
+    border-color: rgba(255, 255, 255, 0);
+  }
+  50% {
+    transform: scale(1.08);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
 }
-
 
 /* ===================== BUTTON ELEMENTS ===================== */
 .btn-text {
@@ -283,7 +318,6 @@ body.no-scroll {
   text-transform: uppercase;
 }
 
-
 /* ===================== ENGINE INDICATORS ===================== */
 .engine-indicators {
   display: flex;
@@ -309,8 +343,12 @@ body.no-scroll {
   animation: indicatorPulse 3s ease-in-out infinite;
 }
 
-.indicator:nth-child(1) { animation-delay: 0s; }
-.indicator:nth-child(2) { animation-delay: 1.5s; }
+.indicator:nth-child(1) {
+  animation-delay: 0s;
+}
+.indicator:nth-child(2) {
+  animation-delay: 1.5s;
+}
 
 .indicator-dot {
   width: 5px;
@@ -321,8 +359,12 @@ body.no-scroll {
   animation: dotBlink 2s ease-in-out infinite;
 }
 
-.indicator:nth-child(1) .indicator-dot { animation-delay: 0s; }
-.indicator:nth-child(2) .indicator-dot { animation-delay: 1s; }
+.indicator:nth-child(1) .indicator-dot {
+  animation-delay: 0s;
+}
+.indicator:nth-child(2) .indicator-dot {
+  animation-delay: 1s;
+}
 
 .start-hint {
   color: rgba(255, 255, 255, 0.457);
@@ -334,20 +376,38 @@ body.no-scroll {
 }
 
 @keyframes indicatorPulse {
-  0%, 100% { opacity: 0.7; transform: translateY(0); }
-  50%       { opacity: 1;   transform: translateY(-2px); }
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
 }
 
 @keyframes dotBlink {
-  0%, 100% { opacity: 1;   transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.8); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
 }
 
 @keyframes fadeInOut {
-  0%, 100% { opacity: 0.3; }
-  50%       { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
-
 
 /* ===================== F1 LIGHTS SEQUENCE ===================== */
 .f1-lights {
@@ -356,7 +416,9 @@ body.no-scroll {
   padding: 30px 45px;
   background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
   border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 2px 4px rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.8),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05);
   border: 2px solid #222;
 }
 
@@ -365,7 +427,9 @@ body.no-scroll {
   height: 70px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #2a2a2a, #0d0d0d);
-  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.9), 0 2px 6px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    inset 0 4px 10px rgba(0, 0, 0, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.5);
   border: 3px solid #1a1a1a;
   position: relative;
   transition: all 0.4s ease;
@@ -400,10 +464,14 @@ body.no-scroll {
 }
 
 @keyframes lightGlow {
-  0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
-
 
 /* ===================== LIGHTS OUT TEXT ===================== */
 .loading-text {
@@ -426,7 +494,9 @@ body.no-scroll {
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
-  text-shadow: 0 0 20px rgba(225, 6, 0, 0.6), 0 0 40px rgba(225, 6, 0, 0.3);
+  text-shadow:
+    0 0 20px rgba(225, 6, 0, 0.6),
+    0 0 40px rgba(225, 6, 0, 0.3);
 }
 
 .loading-text span:first-child {
@@ -436,11 +506,18 @@ body.no-scroll {
 }
 
 @keyframes textPulse {
-  0%   { transform: scale(0.9); opacity: 0; }
-  50%  { transform: scale(1.05); }
-  100% { transform: scale(1);   opacity: 1; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
-
 
 /* ===================== CHEQUERED FLAG ===================== */
 .chequered-flag {
@@ -479,7 +556,6 @@ body.no-scroll {
   object-fit: cover;
 }
 
-
 /* ===================== SCROLL PROGRESS ===================== */
 .scroll-progress {
   position: fixed;
@@ -510,7 +586,6 @@ body.no-scroll {
   transform: scale(1.5);
   box-shadow: 0 0 15px #e10600;
 }
-
 
 /* ===================== CHAPTER INDICATOR ===================== */
 .chapter-indicator {
@@ -543,7 +618,6 @@ body.no-scroll {
   margin: 8px 0;
 }
 
-
 /* ===================== NAVBAR ===================== */
 .navbar {
   position: fixed;
@@ -572,7 +646,6 @@ body.no-scroll {
   -webkit-backdrop-filter: blur(20px);
 }
 
-
 /* ===================== F1 LOGO ===================== */
 .logo-link {
   display: flex;
@@ -583,7 +656,9 @@ body.no-scroll {
 .logo {
   height: 24px;
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   filter: brightness(1);
 }
 
@@ -591,7 +666,6 @@ body.no-scroll {
   opacity: 0.8;
   transform: scale(1.05);
 }
-
 
 /* ===================== NAV LINKS ===================== */
 .nav-links {
@@ -642,13 +716,20 @@ body.no-scroll {
   transition: width 0.3s ease;
 }
 
-.nav-link:hover { color: #fff; }
-.nav-link:hover::after { width: 100%; }
+.nav-link:hover {
+  color: #fff;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
 
 /* Active state — always underlined */
-.nav-link.active { color: #fff; }
-.nav-link.active::after { width: 100%; }
-
+.nav-link.active {
+  color: #fff;
+}
+.nav-link.active::after {
+  width: 100%;
+}
 
 /* ===================== DROPDOWN ===================== */
 .dropdown {
@@ -696,7 +777,6 @@ body.no-scroll {
   padding-left: 28px;
 }
 
-
 /* ===================== LIVE BUTTON ===================== */
 .live-timing {
   display: flex;
@@ -731,7 +811,6 @@ body.no-scroll {
   color: #fff;
   letter-spacing: 1px;
 }
-
 
 /* ===================== HERO ===================== */
 .hero {
@@ -778,10 +857,15 @@ body.no-scroll {
 }
 
 @keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
 
 /* ===================== HERO TITLE ===================== */
 .hero-title {
@@ -794,38 +878,41 @@ body.no-scroll {
 
 .hero-title-top {
   font-family: "Titillium Web", sans-serif;
-  font-size: clamp(32px, 5vw, 64px);
-  font-weight: 500;
-  letter-spacing: 12px;
+  font-size: clamp(32px, 5vw, 64px); /* Scales with screen */
+  font-weight: 300; /* Thin — premium */
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.85);
 }
 
 .hero-title-bottom {
   font-family: "Titillium Web", sans-serif;
-  font-size: clamp(70px, 25vw, 150px);
-  font-weight: 700;
-  letter-spacing: 12px; /* wider spacing like IMG 2 */
+  font-size: clamp(64px, 10vw, 160px); /* Big and bold */
+  font-weight: 900;
+  text-transform: uppercase;
   color: #fff;
+  line-height: 0.9;
+  letter-spacing: 2px;
+  font-kerning: none;
 }
 
-/* Red "1" */
+/* The "1" in Formula 1 — red accent */
 .hero-title-bottom em {
   font-style: normal;
   color: #e10600;
-  margin-left: 10px; /* pushes the 1 away from A */
 }
 
+/* ========================================
+   SUBHEADING
+======================================== */
 .hero-sub {
   font-family: "Titillium Web", sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 6px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
-  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 8px;
 }
-
 
 /* ===================== HERO SCROLL INDICATOR ===================== */
 .hero-scroll {
@@ -866,183 +953,136 @@ body.no-scroll {
   animation: chevronFade 1.5s ease-in-out infinite;
 }
 
-.chevron:nth-child(1) { animation-delay: 0s; }
-.chevron:nth-child(2) { animation-delay: 0.2s; }
-.chevron:nth-child(3) { animation-delay: 0.4s; }
+.chevron:nth-child(1) {
+  animation-delay: 0s;
+}
+.chevron:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.chevron:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 @keyframes chevronFade {
-  0%, 100% { opacity: 0.1; }
-  50%       { opacity: 1; border-color: #e10600; }
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+    border-color: #e10600;
+  }
 }
 
+/* ===================== TRANSITION SECTION ===================== */
 
-/* ===================== CINEMATIC — WHAT IS F1 ===================== */
-.f1-cinematic {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+.f1-transition{
+  height:100vh;
+  background:#000;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  overflow:hidden;
 }
 
-/* Red line that draws across screen */
-.cin-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: #e10600;
-  z-index: 2;
-  box-shadow: 0 0 10px #e10600, 0 0 20px rgba(225, 6, 0, 0.5);
+.transition-word{
+  font-family:"Titillium Web",sans-serif;
+  font-weight:900;
+  font-size:clamp(48px,8vw,110px);
+  color:#fff;
+  letter-spacing:6px;
+  opacity:0;
+  transform:translateY(60px);
 }
 
-/* Words that slam in */
-.cin-words {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  z-index: 3;
-  pointer-events: none;
+/* ===================== WHAT IS F1 SECTION ===================== */
+
+.f1-intro{
+  width:100%;
+  background:#000;
+  padding:140px 80px;
+  display:flex;
+  justify-content:center;
 }
 
-.cin-word {
-  font-family: "Titillium Web", sans-serif;
-  font-size: clamp(40px, 8vw, 100px);
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  opacity: 0;
+.f1-intro-container{
+  max-width:1100px;
+  width:100%;
+  text-align:center;
 }
 
-/* Main content card */
-.cin-content {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
-  align-items: center;
-  width: 100%;
-  padding: 80px;
-  opacity: 0;
-  position: relative;
-  z-index: 4;
-  background:
-    repeating-linear-gradient(
-      45deg, transparent, transparent 2px,
-      rgba(255, 255, 255, 0.012) 2px,
-      rgba(255, 255, 255, 0.012) 4px
-    ),
-    #0a0a0a;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
-  margin: 80px;
+/* HEADER */
+
+.f1-intro-header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin-bottom:30px;
 }
 
-/* Red top accent on content card */
-.cin-content::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #e10600, transparent);
+.f1-intro-line{
+  width:60px;
+  height:2px;
+  background:#e10600;
 }
 
-.cin-left {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.f1-intro-title{
+  font-family:"Titillium Web",sans-serif;
+  font-size:clamp(36px,5vw,56px);
+  font-weight:900;
+  color:#fff;
+  letter-spacing:2px;
+  text-transform:uppercase;
 }
 
-.cin-title {
-  font-family: "Titillium Web", sans-serif;
-  font-size: clamp(36px, 5vw, 64px);
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  line-height: 1.1;
+/* DESCRIPTION */
+
+.f1-intro-description{
+  max-width:720px;
+  margin:0 auto 90px;
+  color:rgba(255,255,255,0.55);
+  font-size:16px;
+  line-height:1.8;
+  font-family:"Titillium Web",sans-serif;
 }
 
-.cin-title em {
-  color: #e10600;
-  font-style: normal;
+/* STATS ROW */
+
+.f1-stats-row{
+  display:flex;
+  justify-content:space-between;
+  gap:40px;
+  flex-wrap:wrap;
 }
 
-.cin-text {
-  font-family: "Titillium Web", sans-serif;
-  font-size: 15px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.8;
+/* STAT */
+
+.f1-stat{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+  flex:1;
+  min-width:120px;
 }
 
-/* Stats grid */
-.cin-right {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+.f1-stat-number{
+  font-family:"Orbitron",sans-serif;
+  font-size:42px;
+  font-weight:700;
+  color:#fff;
 }
 
-.cin-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 32px 28px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
+.f1-stat-label{
+  font-family:"Titillium Web",sans-serif;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.35);
 }
-
-/* Red line that grows on hover */
-.cin-stat::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #e10600;
-  transition: width 0.3s ease;
-}
-
-.cin-stat:hover::before { width: 100%; }
-
-.cin-stat:hover {
-  background: rgba(225, 6, 0, 0.05);
-  border-color: rgba(225, 6, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-.cin-stat-num {
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(24px, 3vw, 36px);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
-}
-
-.cin-stat-label {
-  font-family: "Titillium Web", sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
-}
-
 
 /* ===================== THE SEASON ===================== */
 .season {
@@ -1073,7 +1113,6 @@ body.no-scroll {
   background: radial-gradient(circle, rgba(225, 6, 0, 0.04), transparent 70%);
   pointer-events: none;
 }
-
 
 /* ===================== SEASON HEADER ===================== */
 .season-header {
@@ -1112,7 +1151,6 @@ body.no-scroll {
   text-transform: uppercase;
 }
 
-
 /* ===================== SEASON GRID ===================== */
 .season-grid {
   display: grid;
@@ -1122,7 +1160,6 @@ body.no-scroll {
   z-index: 1;
   align-items: stretch;
 }
-
 
 /* ===================== SEASON CARDS ===================== */
 .season-card {
@@ -1161,7 +1198,6 @@ body.no-scroll {
   color: rgba(255, 255, 255, 0.3);
   margin-bottom: 24px;
 }
-
 
 /* ===================== NEXT RACE CARD ===================== */
 .next-race-card {
@@ -1220,7 +1256,6 @@ body.no-scroll {
   text-transform: uppercase;
 }
 
-
 /* ===================== COUNTDOWN TIMER ===================== */
 .countdown {
   padding-top: 16px;
@@ -1267,7 +1302,6 @@ body.no-scroll {
   flex-shrink: 0;
 }
 
-
 /* ===================== STANDINGS LIST ===================== */
 .standings-list {
   display: flex;
@@ -1298,9 +1332,15 @@ body.no-scroll {
 }
 
 /* Top 3 get red tints */
-.standing-item:nth-child(1) .standing-pos { color: #e10600; }
-.standing-item:nth-child(2) .standing-pos { color: rgba(225, 6, 0, 0.6); }
-.standing-item:nth-child(3) .standing-pos { color: rgba(225, 6, 0, 0.4); }
+.standing-item:nth-child(1) .standing-pos {
+  color: #e10600;
+}
+.standing-item:nth-child(2) .standing-pos {
+  color: rgba(225, 6, 0, 0.6);
+}
+.standing-item:nth-child(3) .standing-pos {
+  color: rgba(225, 6, 0, 0.4);
+}
 
 .standing-color {
   width: 3px;
@@ -1343,22 +1383,38 @@ body.no-scroll {
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 0.3; }
-  50%       { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
-
 
 /* ===================== SHARED ANIMATIONS ===================== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1;    transform: scale(1); }
-  50%       { opacity: 0.75; transform: scale(1.05); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
 }
-
 
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 1024px) {
@@ -1390,8 +1446,12 @@ body.no-scroll {
     padding: calc(70px + 60px) 20px 0;
   }
 
-  .hero-content h1 { font-size: 42px; }
-  .hero-content p  { font-size: 16px; }
+  .hero-content h1 {
+    font-size: 42px;
+  }
+  .hero-content p {
+    font-size: 16px;
+  }
 
   .f1-lights {
     gap: 18px;

@@ -7,10 +7,9 @@
 
     <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&family=Titillium+Web:wght@300;400;600;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&family=Titillium+Web:wght@300;400;600;700;900&family=Barlow+Condensed:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
@@ -21,10 +20,8 @@
   </head>
 
   <body class="no-scroll">
-
     <!-- ===================== LOADING SCREEN ===================== -->
     <div class="loading-screen" id="loadingScreen">
-
       <!-- PRE-LOADER -->
       <div class="preloader" id="preloader">
         <div class="f1-logo-wrap">
@@ -86,10 +83,8 @@
           id="flagGif"
         />
       </div>
-
     </div>
     <!-- ===================== END LOADING SCREEN ===================== -->
-
 
     <!-- ===================== SCROLL PROGRESS ===================== -->
     <div class="scroll-progress" id="scrollProgress">
@@ -110,10 +105,9 @@
 
     <!-- ===================== NAVBAR ===================== -->
     <nav class="navbar" id="navbar">
-
       <!-- F1 Logo — links to official F1 site -->
       <a href="https://www.formula1.com" target="_blank" class="logo-link">
-        <img src="assets/Images/f1-logo1.png" alt="F1 Logo" class="logo" />
+        <img src="assets/Images/f1-logo.png" alt="F1 Logo" class="logo" />
       </a>
 
       <!-- Nav Links with dropdowns -->
@@ -141,22 +135,21 @@
       <!-- Live Timing Button -->
       <div
         class="live-timing"
-        onclick="window.open('https://www.formula1.com/en/racing/2026', '_blank')"
+        onclick="
+          window.open('https://www.formula1.com/en/racing/2026', '_blank')
+        "
       >
         <span class="clock-icon">⏱</span>
         <span class="live-text">LIVE</span>
       </div>
-
     </nav>
     <!-- ===================== END NAVBAR ===================== -->
 
-
     <!-- ===================== HERO ===================== -->
     <section class="hero" id="home">
-
       <!-- Background Image -->
       <div class="hero-bg">
-        <img src="assets/Images/hero1.png" alt="Formula 1" class="hero-img" />
+        <img src="assets/Images/hero.png" alt="Formula 1" class="hero-img" />
       </div>
 
       <!-- Hero Content -->
@@ -175,78 +168,69 @@
           <span class="chevron"></span>
         </div>
       </div>
-
     </section>
     <!-- ===================== END HERO ===================== -->
 
+    <!-- ===================== CINEMATIC TRANSITION ===================== -->
+<section class="f1-transition">
 
-    <!-- ===================== WHAT IS F1 — CINEMATIC ===================== -->
-    <section class="f1-cinematic" id="about">
+  <div class="transition-word">FASTEST.</div>
+  <div class="transition-word">MOST DANGEROUS.</div>
+  <div class="transition-word">MOST WATCHED.</div>
 
-      <!-- Red line that draws across -->
-      <div class="cin-line"></div>
+</section>
 
-      <!-- Words that slam in -->
-      <div class="cin-words">
-        <div class="cin-word" data-delay="0">FASTEST.</div>
-        <div class="cin-word" data-delay="0.15">MOST DANGEROUS.</div>
-        <div class="cin-word" data-delay="0.3">MOST WATCHED.</div>
+    <!-- ===================== WHAT IS F1 ===================== -->
+<section class="f1-intro" id="about">
+
+  <div class="f1-intro-container">
+
+    <div class="f1-intro-header">
+      <span class="f1-intro-line"></span>
+      <h2 class="f1-intro-title">WHAT IS FORMULA 1?</h2>
+    </div>
+
+    <p class="f1-intro-description">
+      Formula 1 is the pinnacle of motorsport — the fastest and most technologically
+      advanced racing series in the world. Ten teams, twenty drivers, and machines
+      capable of exceeding 350 km/h push the limits of engineering every race.
+    </p>
+
+    <div class="f1-stats-row">
+
+      <div class="f1-stat">
+        <span class="f1-stat-number">1950</span>
+        <span class="f1-stat-label">YEAR FOUNDED</span>
       </div>
 
-      <!-- Main content card -->
-      <div class="cin-content">
-        <div class="cin-left">
-          <div class="season-label">
-            <span class="season-label-line"></span>
-            <span class="season-label-text">Since 1950</span>
-          </div>
-          <h2 class="cin-title">WHAT IS<br />FORMULA <em>1</em>?</h2>
-          <p class="cin-text">
-            Formula 1 is the pinnacle of motorsport — the fastest, most
-            technologically advanced racing series on the planet.
-          </p>
-          <p class="cin-text">
-            Ten teams. Twenty drivers. Machines capable of exceeding 350 km/h.
-            Every race pushing the limits of human and engineering performance.
-          </p>
-        </div>
-
-        <!-- Animated stats grid -->
-        <div class="cin-right">
-          <div class="cin-stat" data-target="1950">
-            <span class="cin-stat-num">0</span>
-            <span class="cin-stat-label">Year Founded</span>
-          </div>
-          <div class="cin-stat" data-target="24">
-            <span class="cin-stat-num">0</span>
-            <span class="cin-stat-label">Races Per Season</span>
-          </div>
-          <div class="cin-stat" data-target="10">
-            <span class="cin-stat-num">0</span>
-            <span class="cin-stat-label">Constructor Teams</span>
-          </div>
-          <div class="cin-stat" data-target="20">
-            <span class="cin-stat-num">0</span>
-            <span class="cin-stat-label">Drivers On The Grid</span>
-          </div>
-          <div class="cin-stat" data-target="350">
-            <span class="cin-stat-num">0</span>
-            <span class="cin-stat-label">Top Speed km/h</span>
-          </div>
-          <div class="cin-stat" data-target="1500000000">
-            <span class="cin-stat-num">0</span>
-            <span class="cin-stat-label">Global Fans</span>
-          </div>
-        </div>
+      <div class="f1-stat">
+        <span class="f1-stat-number">24</span>
+        <span class="f1-stat-label">RACES</span>
       </div>
 
-    </section>
-    <!-- ===================== END CINEMATIC ===================== -->
+      <div class="f1-stat">
+        <span class="f1-stat-number">10</span>
+        <span class="f1-stat-label">TEAMS</span>
+      </div>
 
+      <div class="f1-stat">
+        <span class="f1-stat-number">20</span>
+        <span class="f1-stat-label">DRIVERS</span>
+      </div>
+
+      <div class="f1-stat">
+        <span class="f1-stat-number">350+</span>
+        <span class="f1-stat-label">KM/H TOP SPEED</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
     <!-- ===================== THE SEASON ===================== -->
     <section class="season" id="season">
-
       <!-- Section Header -->
       <div class="season-header">
         <div class="season-label">
@@ -258,7 +242,6 @@
 
       <!-- Three cards: Next Race, Driver Standings, Constructor Standings -->
       <div class="season-grid">
-
         <!-- NEXT RACE CARD -->
         <div class="season-card next-race-card">
           <div class="card-label">Next Race</div>
@@ -293,7 +276,9 @@
 
         <!-- DRIVER STANDINGS CARD -->
         <div class="season-card standings-card">
-          <div class="card-label" id="driverStandingsLabel">Driver Standings</div>
+          <div class="card-label" id="driverStandingsLabel">
+            Driver Standings
+          </div>
           <div class="standings-list" id="driverStandings">
             <div class="standing-skeleton"></div>
             <div class="standing-skeleton"></div>
@@ -303,24 +288,20 @@
 
         <!-- CONSTRUCTOR STANDINGS CARD -->
         <div class="season-card standings-card">
-          <div class="card-label" id="constructorStandingsLabel">Constructor Standings</div>
+          <div class="card-label" id="constructorStandingsLabel">
+            Constructor Standings
+          </div>
           <div class="standings-list" id="constructorStandings">
             <div class="standing-skeleton"></div>
             <div class="standing-skeleton"></div>
             <div class="standing-skeleton"></div>
           </div>
         </div>
-
       </div>
-
     </section>
     <!-- ===================== END SEASON ===================== -->
 
-
     <!-- Main JavaScript -->
     <script src="js/main.js"></script>
-
   </body>
 </html>
-
-
