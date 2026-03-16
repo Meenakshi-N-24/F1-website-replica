@@ -126,13 +126,10 @@ body.no-scroll {
 .loading-screen {
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(
-      ellipse at top,
-      rgba(20, 20, 20, 1) 0%,
-      rgba(0, 0, 0, 1) 50%
-    ),
-    linear-gradient(135deg, #0a0a0a 0%, #000 50%, #0a0a0a 100%);
+  background-image:url('../assets/Images/led-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay; /* blends it darkly with the black */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -143,50 +140,17 @@ body.no-scroll {
   overflow: hidden;
 }
 
-.loading-screen.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Carbon fiber background texture */
 .loading-screen::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(255, 255, 255, 0.03) 2px,
-      rgba(255, 255, 255, 0.03) 4px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 2px,
-      rgba(255, 255, 255, 0.03) 2px,
-      rgba(255, 255, 255, 0.03) 4px
-    );
-  opacity: 0.3;
-  animation: driftTexture 30s linear infinite;
+  background: rgba(0, 0, 0, 0.8); /* dark overlay so button still pops */
+  z-index: 0;
 }
 
-.loading-screen::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: none;
+.loading-screen.hidden {
   opacity: 0;
-}
-
-@keyframes driftTexture {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(20px, 20px);
-  }
+  pointer-events: none;
 }
 
 /* ===================== START BUTTON CONTAINER ===================== */
@@ -1370,6 +1334,7 @@ body.no-scroll {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: 1;
 }
 
 .standing-item {
@@ -1379,6 +1344,7 @@ body.no-scroll {
   padding: 12px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   transition: all 0.2s ease;
+  flex: 1;
 }
 
 .standing-item:hover {
@@ -1453,6 +1419,199 @@ body.no-scroll {
   50% {
     opacity: 0.7;
   }
+}
+
+/* ===================== NAVIGATION CARDS ===================== */
+.nav-cards {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+/* ===================== INDIVIDUAL CARD ===================== */
+.nav-card {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  transition: flex 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover expands hovered card, shrinks other */
+.nav-cards:has(.nav-card-grid:hover) .nav-card-grid  { flex: 1.6; }
+.nav-cards:has(.nav-card-grid:hover) .nav-card-legacy { flex: 0.4; }
+.nav-cards:has(.nav-card-legacy:hover) .nav-card-legacy { flex: 1.6; }
+.nav-cards:has(.nav-card-legacy:hover) .nav-card-grid   { flex: 0.4; }
+
+/* Vertical divider between cards */
+.nav-card-grid {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* ===================== BACKGROUND IMAGE ===================== */
+.nav-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.nav-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s ease, filter 0.5s ease;
+  filter: brightness(0.4) saturate(0.8);
+}
+
+.nav-card:hover .nav-card-img {
+  transform: scale(1.06);
+  filter: brightness(0.5) saturate(1);
+}
+
+
+/* ===================== OVERLAY ===================== */
+.nav-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  transition: opacity 0.4s ease;
+}
+
+
+/* ===================== COLOR FLASH ===================== */
+/* Red flash on hover — like pit lane lights */
+.nav-card-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #e10600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.nav-card:active .nav-card-flash {
+  opacity: 0.15;
+}
+
+
+/* ===================== CONTENT ===================== */
+.nav-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav-card-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-card-tag {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.nav-card-title {
+  font-family: "Titillium Web", sans-serif;
+  font-size: clamp(48px, 6vw, 96px);
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 0.9;
+  transition: color 0.3s ease;
+}
+
+.nav-card:hover .nav-card-title {
+  color: #fff;
+}
+
+/* Sub-links — TEAMS · DRIVERS · CIRCUITS */
+.nav-card-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-card-links span {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Dot separator between links */
+.nav-card-links span:not(:last-child)::after {
+  content: "·";
+  margin-left: 20px;
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-card:hover .nav-card-links span {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* CTA — hidden by default, slides up on hover */
+.nav-card-cta {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e10600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.nav-card:hover .nav-card-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ===================== RED TOP ACCENT ===================== */
+/* Red line at top that draws across on hover */
+.nav-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #e10600;
+  z-index: 4;
+  transition: width 0.5s ease;
+}
+
+.nav-card:hover::before {
+  width: 100%;
 }
 
 /* ===================== SHARED ANIMATIONS ===================== */

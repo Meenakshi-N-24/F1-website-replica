@@ -335,6 +335,43 @@ if (typeof gsap !== "undefined") {
     ease: "power2.in",
   });
 
+/* ===================== NAVIGATION CARDS SCROLL ANIMATION ===================== */
+if (typeof gsap !== "undefined") {
+
+  // Left card slides in from left
+  gsap.fromTo(
+    ".nav-card-grid",
+    { opacity: 0, x: -60 },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".nav-cards",
+        start: "top 80%",
+      },
+    }
+  );
+
+  // Right card slides in from right
+  gsap.fromTo(
+    ".nav-card-legacy",
+    { opacity: 0, x: 60 },
+    {
+      opacity: 1,
+      x: 0,
+      duration: 0.8,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".nav-cards",
+        start: "top 80%",
+      },
+    }
+  );
+
+}
+
 } // end if (gsap)
 
 
