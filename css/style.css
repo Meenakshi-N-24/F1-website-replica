@@ -126,7 +126,7 @@ body.no-scroll {
 .loading-screen {
   position: fixed;
   inset: 0;
-  background-image:url('../assets/Images/led-bg.jpg');
+  background-image: url("../assets/Images/led-bg.jpg");
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay; /* blends it darkly with the black */
@@ -994,12 +994,11 @@ body.no-scroll {
   text-transform: uppercase;
 }
 
-
 /* ===================== WHAT IS F1 ===================== */
 .f1-intro {
   position: relative;
   background-color: #000;
-  background-image: url('../assets/Images/f1-bg.jpg');
+  background-image: url("../assets/Images/f1-bg.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1029,7 +1028,6 @@ body.no-scroll {
   background: linear-gradient(to bottom, transparent, #000);
   z-index: 1;
 }
-
 
 /* ===================== F1 CONTAINER ===================== */
 .f1-container {
@@ -1062,7 +1060,6 @@ body.no-scroll {
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.6);
 }
-
 
 /* ===================== STATS ROW ===================== */
 .f1-stats {
@@ -1428,7 +1425,6 @@ body.no-scroll {
   overflow: hidden;
 }
 
-
 /* ===================== INDIVIDUAL CARD ===================== */
 .nav-card {
   position: relative;
@@ -1440,16 +1436,23 @@ body.no-scroll {
 }
 
 /* Hover expands hovered card, shrinks other */
-.nav-cards:has(.nav-card-grid:hover) .nav-card-grid  { flex: 1.6; }
-.nav-cards:has(.nav-card-grid:hover) .nav-card-legacy { flex: 0.4; }
-.nav-cards:has(.nav-card-legacy:hover) .nav-card-legacy { flex: 1.6; }
-.nav-cards:has(.nav-card-legacy:hover) .nav-card-grid   { flex: 0.4; }
+.nav-cards:has(.nav-card-grid:hover) .nav-card-grid {
+  flex: 1.6;
+}
+.nav-cards:has(.nav-card-grid:hover) .nav-card-legacy {
+  flex: 0.4;
+}
+.nav-cards:has(.nav-card-legacy:hover) .nav-card-legacy {
+  flex: 1.6;
+}
+.nav-cards:has(.nav-card-legacy:hover) .nav-card-grid {
+  flex: 0.4;
+}
 
 /* Vertical divider between cards */
 .nav-card-grid {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 
 /* ===================== BACKGROUND IMAGE ===================== */
 .nav-card-bg {
@@ -1463,7 +1466,9 @@ body.no-scroll {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.7s ease, filter 0.5s ease;
+  transition:
+    transform 0.7s ease,
+    filter 0.5s ease;
   filter: brightness(0.4) saturate(0.8);
 }
 
@@ -1471,7 +1476,6 @@ body.no-scroll {
   transform: scale(1.06);
   filter: brightness(0.5) saturate(1);
 }
-
 
 /* ===================== OVERLAY ===================== */
 .nav-card-overlay {
@@ -1486,7 +1490,6 @@ body.no-scroll {
   );
   transition: opacity 0.4s ease;
 }
-
 
 /* ===================== COLOR FLASH ===================== */
 /* Red flash on hover — like pit lane lights */
@@ -1503,7 +1506,6 @@ body.no-scroll {
 .nav-card:active .nav-card-flash {
   opacity: 0.15;
 }
-
 
 /* ===================== CONTENT ===================== */
 .nav-card-content {
@@ -1537,15 +1539,33 @@ body.no-scroll {
   font-family: "Titillium Web", sans-serif;
   font-size: clamp(48px, 6vw, 96px);
   font-weight: 900;
-  color: #fff;
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 0.9;
+}
+
+/* Both spans inherit everything from parent */
+.nav-card-title span {
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-transform: inherit;
+}
+
+.title-the {
+  color: #fff;
+}
+
+.title-main {
+  color: #fff;
   transition: color 0.3s ease;
 }
 
-.nav-card:hover .nav-card-title {
-  color: #fff;
+.nav-card:hover .title-main {
+  color: #e10600;
 }
 
 /* Sub-links — TEAMS · DRIVERS · CIRCUITS */
@@ -1587,14 +1607,15 @@ body.no-scroll {
   text-transform: uppercase;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
 .nav-card:hover .nav-card-cta {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 /* ===================== RED TOP ACCENT ===================== */
 /* Red line at top that draws across on hover */
