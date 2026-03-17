@@ -145,7 +145,7 @@ body.no-scroll {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.8); /* dark overlay so button still pops */
-  z-index: 0;
+  z-index: 1;
 }
 
 .loading-screen.hidden {
@@ -1435,6 +1435,25 @@ body.no-scroll {
   transition: flex 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ===================== RED TOP ACCENT ===================== */
+/* Red line at top that draws across on hover */
+.nav-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #e10600;
+  z-index: 10;
+  transition: width 0.5s ease;
+}
+
+.nav-card:hover::before {
+  width: 100%;
+}
+
+
 /* Hover expands hovered card, shrinks other */
 .nav-cards:has(.nav-card-grid:hover) .nav-card-grid {
   flex: 1.6;
@@ -1449,6 +1468,34 @@ body.no-scroll {
   flex: 0.4;
 }
 
+/* Small triangle top-left of legacy when grid is hovered */
+.nav-cards:has(.nav-card-grid:hover) .nav-card-legacy::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 145px 60px 0 0;
+ border-color: rgba(225, 6, 0, 0.8) transparent transparent transparent;
+  z-index: 10;
+}
+
+/* Small triangle top-right of grid when legacy is hovered */
+.nav-cards:has(.nav-card-legacy:hover) .nav-card-grid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 145px 0 0 60px;
+  border-color: rgba(225, 6, 0, 0.8) transparent transparent transparent;
+  z-index: 10;
+}
+
 /* Vertical divider between cards */
 .nav-card-grid {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
@@ -1461,34 +1508,52 @@ body.no-scroll {
   z-index: 0;
 }
 
+/* Shared image styles */
 .nav-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition:
-    transform 0.7s ease,
-    filter 0.5s ease;
+  transition: transform 0.7s ease, filter 0.5s ease;
   filter: brightness(0.4) saturate(0.8);
 }
 
-.nav-card:hover .nav-card-img {
+/* Grid image hover */
+.nav-card-grid:hover .nav-card-img {
   transform: scale(1.06);
   filter: brightness(0.5) saturate(1);
 }
 
+/* Legacy image — contrast trick to hide grain */
+.nav-card-legacy .nav-card-img {
+  filter: brightness(0.4) saturate(0.8) contrast(1.2);
+  transform: scale(1.05);
+}
+
+/* Legacy image hover */
+.nav-card-legacy:hover .nav-card-img {
+  transform: scale(1.08);
+  filter: brightness(0.5) saturate(1.1) contrast(1.2);
+}
+
+
 /* ===================== OVERLAY ===================== */
-.nav-card-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+.nav-card-grid .nav-card-overlay {
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.95) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(0, 0, 0, 0.2) 100%
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.1) 100%
   );
-  transition: opacity 0.4s ease;
+}
+
+.nav-card-legacy .nav-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
 }
 
 /* ===================== COLOR FLASH ===================== */
@@ -1617,22 +1682,24 @@ body.no-scroll {
   transform: translateY(0);
 }
 
-/* ===================== RED TOP ACCENT ===================== */
-/* Red line at top that draws across on hover */
-.nav-card::before {
-  content: "";
-  position: absolute;
+
+/* ===================== PAGE TRANSITION ===================== */
+.page-transition {
+  position: fixed;
   top: 0;
-  left: 0;
-  width: 0;
-  height: 3px;
+  left: -110%;
+  width: 100%;
+  height: 100%;
   background: #e10600;
-  z-index: 4;
-  transition: width 0.5s ease;
+  z-index: 99999;
+  transform: skewX(-15deg);
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
-.nav-card:hover::before {
-  width: 100%;
+.page-transition.active {
+  left: 0;
+  pointer-events: all;
 }
 
 /* ===================== SHARED ANIMATIONS ===================== */
