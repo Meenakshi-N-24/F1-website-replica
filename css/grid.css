@@ -1,0 +1,388 @@
+/* ===================== GRID PAGE HERO ===================== */
+.grid-hero {
+  height: 100vh;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-hero::before {
+  content: "";
+  position: absolute;
+  top: -200px; left: -200px;
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(225,6,0,0.05), transparent 60%);
+  pointer-events: none;
+}
+
+.grid-hero-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.grid-hero-title {
+  font-family: "Titillium Web", sans-serif;
+  font-size: clamp(80px, 14vw, 180px);
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin: 16px 0;
+}
+
+.grid-hero-title em {
+  font-style: normal;
+  color: #e10600;
+}
+
+.grid-hero-sub {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.grid-hero-scroll {
+  position: absolute;
+  bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 9px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.grid-hero-scroll .chevron {
+  width: 12px; height: 12px;
+  border-right: 1.5px solid rgba(255,255,255,0.3);
+  border-bottom: 1.5px solid rgba(255,255,255,0.3);
+  transform: rotate(45deg);
+  animation: chevronFade 1.5s ease-in-out infinite;
+}
+
+
+/* ===================== GRID SECTIONS ===================== */
+.grid-section {
+  background: #050505;
+  padding: 80px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-section-header {
+  padding: 0 80px;
+  margin-bottom: 60px;
+}
+
+.grid-section-title {
+  font-family: "Titillium Web", sans-serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+
+/* ===================== TEAMS STAGE ===================== */
+.teams-stage {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.teams-stage::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(225,6,0,0.04), transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ===================== DRIVER SLOTS ===================== */
+.d-slot {
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: all 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+  transform: translate(-50%, -50%);
+}
+
+.d-slot::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--clr, #e10600);
+  z-index: 3;
+  transition: background 0.4s ease;
+}
+
+/* Large — active drivers */
+.d-slot.sz-lg {
+  width: 150px;
+}
+
+.d-slot.sz-lg .d-photo {
+  height: 130px;
+}
+
+/* Small — neighboring drivers */
+.d-slot.sz-sm {
+  width: 100px;
+}
+
+.d-slot.sz-sm .d-photo {
+  height: 84px;
+}
+
+.d-slot .d-photo {
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: filter 0.4s ease;
+}
+
+.d-slot.dimmed .d-photo {
+  filter: grayscale(50%) brightness(0.7);
+}
+
+.d-slot:not(.dimmed) .d-photo {
+  filter: grayscale(0%) brightness(1);
+}
+
+.d-slot .d-info {
+  padding: 6px 10px 8px;
+  background: #080808;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.d-slot .d-first {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 7px; font-weight: 600;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 3px; text-transform: uppercase;
+}
+
+.d-slot .d-last {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 13px; font-weight: 900;
+  color: #fff; text-transform: uppercase;
+  letter-spacing: 0.5px; line-height: 1.1;
+}
+
+.d-slot .d-num {
+  position: absolute;
+  top: 7px; right: 7px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 10px; font-weight: 700;
+  color: rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.55);
+  padding: 2px 5px;
+  border-radius: 3px;
+  z-index: 4;
+}
+
+.d-slot.dimmed {
+  opacity: 0.4;
+}
+
+
+/* ===================== TEAM CENTER CARD ===================== */
+.team-center-card {
+  position: absolute;
+  width: 200px;
+  left: 50%; top: 46%;
+  transform: translate(-50%, -50%) scale(0.85);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--clr-dark, #111);
+  border: 1px solid rgba(255,255,255,0.07);
+  opacity: 0;
+  z-index: 10;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.team-center-card.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.85);
+}
+
+.team-center-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--clr, #e10600);
+  z-index: 3;
+  transition: background 0.4s ease;
+}
+
+.tcc-diagonal {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg,
+    rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 45%,
+    rgba(0,0,0,0.1) 45%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+}
+
+.tcc-top {
+  position: relative; z-index: 2;
+  padding: 14px 14px 0;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.tcc-logo {
+  height: 28px; width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.tcc-f1 {
+  height: 13px;
+  filter: brightness(0) invert(1);
+  opacity: 0.22;
+}
+
+.tcc-car {
+  position: relative; z-index: 2;
+  width: 110%; height: 150px;
+  object-fit: contain;
+  margin-left: -5%;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.8));
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.team-center-card.visible .tcc-car {
+  animation: carFloat 3s ease-in-out infinite;
+}
+
+@keyframes carFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+.tcc-bottom {
+  position: relative; z-index: 2;
+  padding: 8px 14px 14px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.tcc-name {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 16px; font-weight: 900;
+  color: #fff; text-transform: uppercase;
+  letter-spacing: 1px; line-height: 1;
+}
+
+.tcc-tag {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 7px; font-weight: 600;
+  color: var(--clr, #e10600);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-top: 3px; display: block;
+  transition: color 0.4s ease;
+}
+
+
+/* ===================== TEAMS NAV ===================== */
+.teams-nav {
+  position: absolute;
+  bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; gap: 20px;
+  z-index: 20;
+}
+
+.tn-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff; font-size: 16px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease;
+  font-family: "Titillium Web", sans-serif;
+}
+
+.tn-btn:hover {
+  background: rgba(225,6,0,0.2);
+  border-color: rgba(225,6,0,0.5);
+}
+
+.tn-dots {
+  display: flex; gap: 8px;
+  align-items: center;
+}
+
+.tn-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tn-dot.active {
+  background: #e10600;
+  transform: scale(1.5);
+  box-shadow: 0 0 8px rgba(225,6,0,0.6);
+}
+
+
+/* ===================== COMING SOON ===================== */
+.coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 16px;
+  text-align: center;
+  padding: 80px;
+}
+
+.coming-soon-title {
+  font-family: "Titillium Web", sans-serif;
+  font-size: clamp(48px, 8vw, 100px);
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 0.08;
+}
+
+.coming-soon-sub {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 2px;
+}

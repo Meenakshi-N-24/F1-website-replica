@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Grid — Formula 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Orbitron:wght@400;700;900&family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/grid.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="navbar show" id="navbar">
+      <a href="index.html" class="logo-link page-link">
+        <img src="assets/Images/f1-logo.png" alt="F1 Logo" class="logo"/>
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link page-link" href="index.html">HOME</a></li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">GRID ▼</a>
+          <div class="dropdown">
+            <a href="#teams">TEAMS</a>
+            <a href="#drivers">DRIVERS</a>
+            <a href="#circuits">CIRCUITS</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">LEGACY ▼</a>
+          <div class="dropdown">
+            <a href="legacy.html" class="page-link">HALL OF FAME</a>
+            <a href="legacy.html" class="page-link">ARTICLES</a>
+          </div>
+        </li>
+      </ul>
+      <div class="live-timing" onclick="window.open('https://www.formula1.com/en/racing/2026','_blank')">
+        <span class="clock-icon">⏱</span>
+        <span class="live-text">LIVE</span>
+      </div>
+    </nav>
+
+    <!-- ===================== PAGE HERO ===================== -->
+    <section class="grid-hero">
+      <div class="grid-hero-content">
+        <div class="season-label">
+          <span class="season-label-line"></span>
+          <span class="season-label-text">2026 Season</span>
+        </div>
+        <h1 class="grid-hero-title">THE <em>GRID</em></h1>
+        <p class="grid-hero-sub">22 Drivers · 11 Teams · 24 Circuits</p>
+      </div>
+      <div class="grid-hero-scroll">
+        <span>Scroll</span>
+        <div class="chevron"></div>
+      </div>
+    </section>
+
+    <!-- ===================== TEAMS ===================== -->
+    <section class="grid-section" id="teams">
+      <div class="grid-section-header">
+        <div class="season-label">
+          <span class="season-label-line"></span>
+          <span class="season-label-text">2026 Constructors</span>
+        </div>
+        <h2 class="grid-section-title">TEAMS</h2>
+      </div>
+
+      <div class="teams-stage" id="teamsStage">
+
+        <!-- Team card — hidden until team is active -->
+        <div class="team-center-card" id="teamCard">
+          <div class="tcc-diagonal"></div>
+          <div class="tcc-top">
+            <img class="tcc-logo" id="tccLogo" src="" alt=""/>
+            <img class="tcc-f1" src="assets/Images/f1-logo.png" alt="F1" onerror="this.style.display='none'"/>
+          </div>
+          <img class="tcc-car" id="tccCar" src="" alt=""/>
+          <div class="tcc-bottom">
+            <div class="tcc-name" id="tccName"></div>
+            <span class="tcc-tag" id="tccTag"></span>
+          </div>
+        </div>
+
+        <!-- 6 driver slots -->
+        <div class="d-slot sz-sm dimmed" id="slot-ul"></div>
+        <div class="d-slot sz-sm dimmed" id="slot-ur"></div>
+        <div class="d-slot sz-lg"        id="slot-ml"></div>
+        <div class="d-slot sz-lg"        id="slot-mr"></div>
+        <div class="d-slot sz-sm dimmed" id="slot-ll"></div>
+        <div class="d-slot sz-sm dimmed" id="slot-lr"></div>
+
+        <!-- Nav -->
+        <div class="teams-nav">
+          <button class="tn-btn" id="teamPrev">←</button>
+          <div class="tn-dots" id="teamDots"></div>
+          <button class="tn-btn" id="teamNext">→</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== DRIVERS ===================== -->
+    <section class="grid-section" id="drivers">
+      <div class="grid-section-header">
+        <div class="season-label">
+          <span class="season-label-line"></span>
+          <span class="season-label-text">2026 Championship</span>
+        </div>
+        <h2 class="grid-section-title">DRIVERS</h2>
+      </div>
+      <div class="coming-soon">
+        <h2 class="coming-soon-title">DRIVERS</h2>
+        <p class="coming-soon-sub">All 22 drivers — launching soon</p>
+      </div>
+    </section>
+
+    <!-- ===================== CIRCUITS ===================== -->
+    <section class="grid-section" id="circuits">
+      <div class="grid-section-header">
+        <div class="season-label">
+          <span class="season-label-line"></span>
+          <span class="season-label-text">2026 Calendar</span>
+        </div>
+        <h2 class="grid-section-title">CIRCUITS</h2>
+      </div>
+      <div class="coming-soon">
+        <h2 class="coming-soon-title">CIRCUITS</h2>
+        <p class="coming-soon-sub">All 24 circuits — launching soon</p>
+      </div>
+    </section>
+
+    <!-- PAGE TRANSITION -->
+    <div class="page-transition" id="pageTransition"></div>
+
+    <script src="js/grid.js"></script>
+  </body>
+</html>
